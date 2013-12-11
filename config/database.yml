@@ -19,7 +19,8 @@ development:
   encoding: unicode
   database: love_maybe_development
   pool: 5
-  password:
+  username: postgres
+  password: Twins999
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -47,13 +48,13 @@ test:
   encoding: unicode
   database: love_maybe_test
   pool: 5
-  username: love_maybe
-  password:
+  username: postgres
+  password: Twins999
 
 production:
   adapter: postgresql
   encoding: unicode
   database: love_maybe_production
   pool: 5
-  username: love_maybe
+  username: postgres
   password:
