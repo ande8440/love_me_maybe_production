@@ -1,0 +1,1 @@
+json.extract! @user, :id, :first_name, :last_name, :user_email, :user_phone, :user_handle, :admin, :password_digest, :remember_token, :user_password, :user_password_confirmation, :created_at, :updated_at
