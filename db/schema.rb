@@ -11,10 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212005206) do
+ActiveRecord::Schema.define(version: 20131212011312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "date_requests", force: true do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "date_phone"
+    t.string   "date_username"
+    t.string   "date_username_site"
+    t.text     "date_comment"
+    t.string   "date_rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "date_responses", force: true do |t|
+    t.integer  "date_request_id"
+    t.string   "date_response_first_name"
+    t.string   "date_response_last_name"
+    t.integer  "date_response_phone"
+    t.string   "date_response_username"
+    t.string   "date_response_site"
+    t.text     "date_response_comment"
+    t.string   "date_response_rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_dating_usernames", force: true do |t|
     t.integer  "dating_site_id"
