@@ -1,0 +1,2 @@
+module DateResponsesHelper
+end

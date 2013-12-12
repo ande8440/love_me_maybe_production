@@ -1,0 +1,41 @@
+<h1>Listing date_requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Date phone</th>
+      <th>Date username</th>
+      <th>Date username site</th>
+      <th>Date comment</th>
+      <th>Date rating</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @date_requests.each do |date_request| %>
+      <tr>
+        <td><%= date_request.user_id %></td>
+        <td><%= date_request.first_name %></td>
+        <td><%= date_request.last_name %></td>
+        <td><%= date_request.date_phone %></td>
+        <td><%= date_request.date_username %></td>
+        <td><%= date_request.date_username_site %></td>
+        <td><%= date_request.date_comment %></td>
+        <td><%= date_request.date_rating %></td>
+        <td><%= link_to 'Show', date_request %></td>
+        <td><%= link_to 'Edit', edit_date_request_path(date_request) %></td>
+        <td><%= link_to 'Destroy', date_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Date request', new_date_request_path %>

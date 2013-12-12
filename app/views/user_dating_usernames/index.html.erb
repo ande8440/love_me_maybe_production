@@ -1,0 +1,31 @@
+<h1>Listing user_dating_usernames</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dating site</th>
+      <th>User</th>
+      <th>Dating site username</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_dating_usernames.each do |user_dating_username| %>
+      <tr>
+        <td><%= user_dating_username.dating_site_id %></td>
+        <td><%= user_dating_username.user_id %></td>
+        <td><%= user_dating_username.dating_site_username %></td>
+        <td><%= link_to 'Show', user_dating_username %></td>
+        <td><%= link_to 'Edit', edit_user_dating_username_path(user_dating_username) %></td>
+        <td><%= link_to 'Destroy', user_dating_username, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User dating username', new_user_dating_username_path %>

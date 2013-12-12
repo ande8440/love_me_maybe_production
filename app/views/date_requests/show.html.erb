@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @date_request.user_id %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @date_request.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @date_request.last_name %>
+</p>
+
+<p>
+  <strong>Date phone:</strong>
+  <%= @date_request.date_phone %>
+</p>
+
+<p>
+  <strong>Date username:</strong>
+  <%= @date_request.date_username %>
+</p>
+
+<p>
+  <strong>Date username site:</strong>
+  <%= @date_request.date_username_site %>
+</p>
+
+<p>
+  <strong>Date comment:</strong>
+  <%= @date_request.date_comment %>
+</p>
+
+<p>
+  <strong>Date rating:</strong>
+  <%= @date_request.date_rating %>
+</p>
+
+<%= link_to 'Edit', edit_date_request_path(@date_request) %> |
+<%= link_to 'Back', date_requests_path %>

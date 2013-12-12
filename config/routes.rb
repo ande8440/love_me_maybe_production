@@ -1,4 +1,10 @@
 LoveMaybe::Application.routes.draw do
+  resources :date_responses
+
+  resources :date_requests
+
+  resources :user_dating_usernames
+
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

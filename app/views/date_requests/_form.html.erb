@@ -1,0 +1,49 @@
+<%= form_for(@date_request) do |f| %>
+  <% if @date_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@date_request.errors.count, "error") %> prohibited this date_request from being saved:</h2>
+
+      <ul>
+      <% @date_request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :date_phone %><br>
+    <%= f.number_field :date_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :date_username %><br>
+    <%= f.text_field :date_username %>
+  </div>
+  <div class="field">
+    <%= f.label :date_username_site %><br>
+    <%= f.text_field :date_username_site %>
+  </div>
+  <div class="field">
+    <%= f.label :date_comment %><br>
+    <%= f.text_area :date_comment %>
+  </div>
+  <div class="field">
+    <%= f.label :date_rating %><br>
+    <%= f.text_field :date_rating %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

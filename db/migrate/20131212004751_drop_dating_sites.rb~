@@ -1,0 +1,4 @@
+class DropDatingSites < ActiveRecord::Migration
+  def change
+  end
+end

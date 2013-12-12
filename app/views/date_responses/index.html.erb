@@ -1,0 +1,41 @@
+<h1>Listing date_responses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date request</th>
+      <th>Date response first name</th>
+      <th>Date response last name</th>
+      <th>Date response phone</th>
+      <th>Date response username</th>
+      <th>Date response site</th>
+      <th>Date response comment</th>
+      <th>Date response rating</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @date_responses.each do |date_response| %>
+      <tr>
+        <td><%= date_response.date_request_id %></td>
+        <td><%= date_response.date_response_first_name %></td>
+        <td><%= date_response.date_response_last_name %></td>
+        <td><%= date_response.date_response_phone %></td>
+        <td><%= date_response.date_response_username %></td>
+        <td><%= date_response.date_response_site %></td>
+        <td><%= date_response.date_response_comment %></td>
+        <td><%= date_response.date_response_rating %></td>
+        <td><%= link_to 'Show', date_response %></td>
+        <td><%= link_to 'Edit', edit_date_response_path(date_response) %></td>
+        <td><%= link_to 'Destroy', date_response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Date response', new_date_response_path %>

@@ -1,0 +1,49 @@
+<%= form_for(@date_response) do |f| %>
+  <% if @date_response.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@date_response.errors.count, "error") %> prohibited this date_response from being saved:</h2>
+
+      <ul>
+      <% @date_response.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date_request_id %><br>
+    <%= f.number_field :date_request_id %>
+  </div>
+  <div class="field">
+    <%= f.label :date_response_first_name %><br>
+    <%= f.text_field :date_response_first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :date_response_last_name %><br>
+    <%= f.text_field :date_response_last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :date_response_phone %><br>
+    <%= f.number_field :date_response_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :date_response_username %><br>
+    <%= f.text_field :date_response_username %>
+  </div>
+  <div class="field">
+    <%= f.label :date_response_site %><br>
+    <%= f.text_field :date_response_site %>
+  </div>
+  <div class="field">
+    <%= f.label :date_response_comment %><br>
+    <%= f.text_area :date_response_comment %>
+  </div>
+  <div class="field">
+    <%= f.label :date_response_rating %><br>
+    <%= f.text_field :date_response_rating %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

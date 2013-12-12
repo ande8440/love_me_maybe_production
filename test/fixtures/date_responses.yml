@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_request_id: 1
+  date_response_first_name: MyString
+  date_response_last_name: MyString
+  date_response_phone: 1
+  date_response_username: MyString
+  date_response_site: MyString
+  date_response_comment: MyText
+  date_response_rating: MyString
+
+two:
+  date_request_id: 1
+  date_response_first_name: MyString
+  date_response_last_name: MyString
+  date_response_phone: 1
+  date_response_username: MyString
+  date_response_site: MyString
+  date_response_comment: MyText
+  date_response_rating: MyString

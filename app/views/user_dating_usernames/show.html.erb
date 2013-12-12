@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dating site:</strong>
+  <%= @user_dating_username.dating_site_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_dating_username.user_id %>
+</p>
+
+<p>
+  <strong>Dating site username:</strong>
+  <%= @user_dating_username.dating_site_username %>
+</p>
+
+<%= link_to 'Edit', edit_user_dating_username_path(@user_dating_username) %> |
+<%= link_to 'Back', user_dating_usernames_path %>
