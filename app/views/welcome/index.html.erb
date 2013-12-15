@@ -1,5 +1,30 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
+<div style="background: #eeeeee url('/assets/background.png') left top repeat; width: 130%; height: 300px; position: absolute; top: 0px; left:0px;"></div>
+
+<div class="container" style="padding: 15px;">
+	<div class="row">
+		<div class="large-12 columns">
+			<%= image_tag('home-logo.png') %>
+			<a href="#" class="button tiny alert" style="float: right;">Log In</a>
+			<a href="<%= new_user_path%>" class="button tiny alert" style="float: right; margin-right: 10px;">Sign Up</a>
+		</div>
+
+	<div class="large-12 columns" style="margin-top: 100px;">
+		<div class="large-5 columns" style="margin-bottom: 15px;"><%= image_tag('home-app-menu.png') %></div>
+		<div class="large-7 columns" style="float: right; height: 330px; background: #fff; box-shadow: 0 5px 0px 0px white, 0 -9px 0px 0px white, 6px 0 20px -10px rgba(0, 0, 0, 0.6), -6px 0 20px -10px rgba(0, 0, 0, 0.6); margin-top:8px;">
+	  <h3 style="color: #003366;">Not sure what to think</br>about that last date? </h3>
+	  <ol style="padding-left: 1.5em; line-height: 170%;">
+		  <li style="margin-bottom: 10px;">Let your date know that you are into them if they are into you, or start a friendship without having to worry if they are interested in more</li>
+		  <li style="margin-bottom: 10px;">Get &amp; give feedback <strong>without your date knowing it was you</strong></li>
+		  <li>Use with any of the most popular online dating apps, and even get feedback from offline dates</li>
+  </ol>
+  <a href="<%= new_user_path%>" class="button" style="margin-left: 1.5em;">Get started for free</a>
+  
+  
+  </div>
+  </div>
+
+ 
+</div>
+</div>
+  
 

@@ -1,2 +1,0 @@
-class DateResponse < ActiveRecord::Base
-end

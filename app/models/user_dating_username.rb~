@@ -1,2 +1,0 @@
-class UserDatingUsername < ActiveRecord::Base
-end
