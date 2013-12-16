@@ -5,7 +5,7 @@
 		  </div>
 		  <div class="large-5 field" style="display: inline-block;">
 			  <%= f.label :dating_site_website, "Online Dating Site/App" %><br>
-			  <%= f.text_field :dating_site_website %>
+			  <%= f.select( :dating_site_website, [['OkCupid','OkCupid'],['Tinder','Tinder'],['eHarmony','eHarmony'],['Match.com','Match.com'],['PlentyofFish','PlentyofFish'],['Zoosk','Zoosk'],['Christian Mingle','Christian Mingle'],['DateHookup','DateHookup'],['HowAboutWe','HowAboutWe'],['Coffee Meets Bagel','Coffee Meets Bagel'],['BlackPeopleMeet','BlackPeopleMeet'],['JDate','JDate'],['Badoo','Badoo'],['Meetme','Meetme'],['Skout','Skout'],['SeniorPeopleMeet','SeniorPeopleMeet']], { :prompt => 'Select'}) %>
 		  </div>
 		  <div class="field" style="width: 5%; display: inline-block;">
 		  <%= f.hidden_field :_destroy %>
