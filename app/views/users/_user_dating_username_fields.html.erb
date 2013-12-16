@@ -1,0 +1,15 @@
+<div class="fieldset">
+		<div class="large-5 field" style="display: inline-block; margin-right: 10px;">
+			  <%= f.label :dating_site_username, "Online Dating Username" %><br>
+			  <%= f.text_field :dating_site_username %>
+		  </div>
+		  <div class="large-5 field" style="display: inline-block;">
+			  <%= f.label :dating_site_website, "Online Dating Site/App" %><br>
+			  <%= f.text_field :dating_site_website %>
+		  </div>
+		  <div class="field" style="width: 5%; display: inline-block;">
+		  <%= f.hidden_field :_destroy %>
+		  <%= link_to "remove", '#', class: "remove_fields" %>
+	 	 </div>
+		  
+	  </div>

@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @user.user_dating_usernames.build
   end
 
   # GET /users/1/edit
@@ -69,6 +70,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :user_email, :user_phone, :user_handle, :admin, :password_digest, :remember_token, :user_password, :user_password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :user_email, :user_phone, :user_handle, :admin, :password_digest, :remember_token, :user_password, :user_password_confirmation, user_dating_usernames_attributes: [:dating_site_username, :dating_site_website])
     end
 end
