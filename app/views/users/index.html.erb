@@ -8,11 +8,7 @@
       <th>User email</th>
       <th>User phone</th>
       <th>User handle</th>
-      <th>Admin</th>
-      <th>Password digest</th>
-      <th>Remember token</th>
-      <th>User password</th>
-      <th>User password confirmation</th>
+
       <th></th>
       <th></th>
       <th></th>
@@ -24,14 +20,10 @@
       <tr>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
-        <td><%= user.user_email %></td>
+        <td><%= user.email %></td>
         <td><%= user.user_phone %></td>
         <td><%= user.user_handle %></td>
         <td><%= user.admin %></td>
-        <td><%= user.password_digest %></td>
-        <td><%= user.remember_token %></td>
-        <td><%= user.user_password %></td>
-        <td><%= user.user_password_confirmation %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

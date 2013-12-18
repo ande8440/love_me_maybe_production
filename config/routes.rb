@@ -7,6 +7,22 @@ LoveMaybe::Application.routes.draw do
 
   resources :users
 
+  resources :sessions, only: [:new, :create, :destroy]	
+
+ # get 'signout', to: 'sessions#destroy', as: 'signout' 
+
+ # post 'signout', to: 'sessions#destroy', as: 'signout' 
+
+ # delete 'signout', to: 'sessions#destroy', as: 'signout' 
+
+  get '/signin', to: 'sessions#new'
+
+  post '/signin', to: 'sessions#create'
+
+  delete '/signout', to: 'sessions#destroy'
+
+  get '/signup', to: 'users#new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

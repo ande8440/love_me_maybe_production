@@ -51,3 +51,6 @@ gem 'rails_12factor', group: :production
 ruby "1.9.3"
 
 gem 'zurb-foundation'
+
+gem 'bcrypt-ruby', '3.0.1'
+

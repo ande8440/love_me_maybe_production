@@ -26,8 +26,8 @@
   </div>
   <div style="clear:both;"></div>
   <div class="large-5 field" style="display: inline-block; margin-right: 10px;">
-    <%= f.label :user_email, "Email*" %><br>
-    <%= f.text_field :user_email %>
+    <%= f.label :email, "Email*" %><br>
+    <%= f.text_field :email %>
   </div>
   <div class="large-5 field" style="display: inline-block;">
     <%= f.label :user_phone, "Phone Number*" %><br>
@@ -49,12 +49,12 @@
   </div>
   <div style="clear:both;"></div>
   <div class="large-6 field" style="display: inline-block;">
-    <%= f.label :user_password, "Password (minimum 6 characters)" %><br>
-    <%= f.text_field :user_password %>
+    <%= f.label :password, "Password (minimum 6 characters)" %><br>
+    <%= f.password_field :password %>
   </div>
   <div class="large-6 field" style="display: inline-block;">
-    <%= f.label :user_password_confirmation, "Password Confirmation" %><br>
-    <%= f.text_field :user_password_confirmation %>
+    <%= f.label :password_confirmation, "Password Confirmation" %><br>
+    <%= f.password_field :password_confirmation %>
   </div>
   <div style="clear:both;"></div>
   <div class="actions">

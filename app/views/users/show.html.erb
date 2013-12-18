@@ -12,7 +12,7 @@
 
 <p>
   <strong>User email:</strong>
-  <%= @user.user_email %>
+  <%= @user.email %>
 </p>
 
 <p>
@@ -25,30 +25,6 @@
   <%= @user.user_handle %>
 </p>
 
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <strong>Remember token:</strong>
-  <%= @user.remember_token %>
-</p>
-
-<p>
-  <strong>User password:</strong>
-  <%= @user.user_password %>
-</p>
-
-<p>
-  <strong>User password confirmation:</strong>
-  <%= @user.user_password_confirmation %>
-</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -1,0 +1,26 @@
+<% provide(:title, 'Sign in') %>
+<h1>Sign in</h1>
+
+<div class="row">
+	<div class="span5">
+
+      <%= form_for(:session, url: sessions_path) do |f| %>	
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+
+	<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+      <% end %>
+
+<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+
+<h1 style="display: inline; position: relative; left: 61px; top: 50px;">OR</h1>
+	
+<a class="btn btn-primary" style="position: relative; top: 32px; left: 130px; width: 200px; height: 40px; font-weight: 900; font-size: 15px; padding-top: 5px;" href="/auth/facebook">
+	<span class="icon-social-facebook" style="position:relative; left: -5px; top: 3px;"></span>
+	<span style="position: relative; top: 10px; left: -6px;">Sign in with Facebook</span>
+</a>
+</div>

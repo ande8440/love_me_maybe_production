@@ -3,8 +3,13 @@
 
 		<div class="large-12 columns">
 			<%= image_tag('home-logo.png') %>
+			<%= signed_in? %>
+			<% if signed_in? %>
+				<%= link_to "Sign out", signout_path, method: "delete" %>
+			<% else %>
 			<a href="#" class="button tiny alert" style="float: right;">Log In</a>
 			<a href="<%= new_user_path%>" class="button tiny alert" style="float: right; margin-right: 10px;">Sign Up</a>
+			<% end %>
 		</div>
 
 	<div class="large-12 columns" style="margin-top: 100px;">
