@@ -6,13 +6,17 @@
 				<div style="width: 30%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; text-align: center;">Responses</div>
 
 				<div style="width: 100%; background: #fff; border-radius: 0px 5px 5px 5px; margin-top:0px; padding: 30px;">
-					<h4 style="display:inline; float: left;"> <a href=<%= user_url(@user) %>><%= user_url(@user)%></a> </h4>
-					<p style="margin-left: 30px; float: left;">Post to your dating &amp; social media profiles or send to date</p>
+					<%= image_tag('link-link.png', style: "float: left;") %>
+				<h5 style="display:inline; float: left;"> <a href=<%= root_url+@user.url_slug%>><%= root_url+@user.url_slug%></a> </h5>
+					<%= image_tag('small-arrow.png', style: "float: left; margin-left: 10px;") %>
+					<p style="margin-left: 10px; float: left; font-style: italic; font-weight: 900;">Post to your dating &amp; social media profiles or send to date</p>
 					<div style="clear: both;"></div>
-					<h3 style="margin-bottom: 35px; margin-top: 0px;">Dates</h3>
+					<h4 style="margin-top: 0px; color: #444; font-size: 19px;">Dates</h4>
+					
 					<%= render 'index' %>
 					<%= link_to 'Add Date', new_date_request_path, remote: :true, class: "button small" %>
 					<div id="date_request_area"></div>
+					
 				</div>
 
 </div>

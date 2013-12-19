@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 	has_many :date_responses, through: :date_requests
 	accepts_nested_attributes_for :user_dating_usernames, :allow_destroy => true	
 	VALID_HANDLE_REGEX = /\A([!#$&-;=?-\[\]_a-z~]|%[0-9a-fA-F]{2})+\z/
-	validates :user_handle, presence: true, length: { maximum: 75 }, format: {with: VALID_HANDLE_REGEX}, uniqueness: { case_sensitive: false }
+	validates :user_handle, presence: true, length: { maximum: 250 }, format: {with: VALID_HANDLE_REGEX}, uniqueness: { case_sensitive: false }
+	validates :url_slug, presence: true, length: { maximum: 250 }, uniqueness: { case_sensitive: false }
 	validates :first_name, presence: true, length: { maximum: 75 }
 	validates :last_name, presence: true, length: { maximum: 75 }
 
@@ -26,6 +27,17 @@ class User < ActiveRecord::Base
 	before_save :create_remember_token
 	validates_confirmation_of :password#, :on => :create#, :if => :should_validate_password?
 
+	before_validation :generate_slug
+
+	
+	def to_param
+		url_slug
+	end
+
+	def generate_slug
+		self.url_slug ||= user_handle.parameterize
+	end
+	
 	def password=(unencrypted_password)
 	    require "bcrypt"
 	    @password = unencrypted_password
@@ -47,6 +59,8 @@ class User < ActiveRecord::Base
 	 def create_remember_token
 	  self.remember_token = SecureRandom.urlsafe_base64
 	 end
+
+
 
 	 #def should_validate_password?
 	  # if self.provider.present? && self.uid.present?

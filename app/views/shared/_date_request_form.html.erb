@@ -42,8 +42,9 @@
     <%= f.text_area :date_comment %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Date", class: "button tiny", style: "display:inline; float: left; margin-right: 15px;" %>
   </div>
+  <%= link_to 'Forget it', root_path, class: "button tiny" %>
   </div>
 <% end %>
 
