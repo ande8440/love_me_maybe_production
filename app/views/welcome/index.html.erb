@@ -1,4 +1,28 @@
-<div style="background: #eeeeee url(<%= asset_path 'background.png'%>) left top repeat; width: 130%; height: 300px; position: absolute; top: 0px; left:0px;"></div>
+		<% if signed_in? %>
+			<%= render 'layouts/header' %>
+
+			<div style="background: url(<%= asset_path 'background.png' %>) repeat; margin-top: 50px; margin-left: auto; margin-right: auto; width: 90%; border-radius: 5px; /*box-shadow: 0 0 1px 1px;*/">
+				<div style="background: #f5f5f5; width: 30%;height: 60px; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; display: inline; float:left; padding: 20px; text-align: center;">Requests</div>
+				<div style="width: 30%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; text-align: center;">Responses</div>
+
+				<div style="width: 100%; background: #fff; border-radius: 0px 5px 5px 5px; margin-top:0px; padding: 30px;">
+					<h4 style="display:inline; float: left;"> <a href=<%= user_url(@user) %>><%= user_url(@user)%></a> </h4>
+					<p style="margin-left: 30px; float: left;">Post to your dating &amp; social media profiles or send to date</p>
+					<div style="clear: both;"></div>
+					<h3 style="margin-bottom: 35px; margin-top: 0px;">Dates</h3>
+					<%= render 'index' %>
+					<%= link_to 'Add Date', new_date_request_path, remote: :true, class: "button small" %>
+					<div id="date_request_area"></div>
+				</div>
+
+</div>
+<div style="clear: both;"></div>
+
+<%= link_to 'Back', users_path %>
+
+		<% else %>
+
+			<div style="background: #eeeeee url(<%= asset_path 'background.png'%>) left top repeat; width: 130%; height: 300px; position: absolute; top: 0px; left:0px;"></div>
 
 
 		<div class="large-12 columns">
@@ -7,7 +31,7 @@
 			<% if signed_in? %>
 				<%= link_to "Sign out", signout_path, method: "delete" %>
 			<% else %>
-			<a href="#" class="button tiny alert" style="float: right;">Log In</a>
+				<a href=<%= signin_path%> class="button tiny alert" style="float: right;">Log In</a>
 			<a href="<%= new_user_path%>" class="button tiny alert" style="float: right; margin-right: 10px;">Sign Up</a>
 			<% end %>
 		</div>
@@ -27,4 +51,5 @@
   </div>
   </div>
 
+  <% end %>
 

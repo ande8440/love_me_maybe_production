@@ -7,15 +7,20 @@ class DateRequestsController < ApplicationController
     @date_requests = DateRequest.all
   end
 
+  def new
+	  @date_request = DateRequest.new
+	  
+	  respond_to do |format|
+		  format.html
+		  format.js
+	  end
+  end
+
   # GET /date_requests/1
   # GET /date_requests/1.json
   def show
   end
 
-  # GET /date_requests/new
-  def new
-    @date_request = DateRequest.new
-  end
 
   # GET /date_requests/1/edit
   def edit
@@ -24,11 +29,11 @@ class DateRequestsController < ApplicationController
   # POST /date_requests
   # POST /date_requests.json
   def create
-    @date_request = DateRequest.new(date_request_params)
+    @date_request = current_user.date_requests.new(date_request_params)
 
     respond_to do |format|
       if @date_request.save
-        format.html { redirect_to @date_request, notice: 'Date request was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Date request was successfully created.' }
         format.json { render action: 'show', status: :created, location: @date_request }
       else
         format.html { render action: 'new' }

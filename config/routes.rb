@@ -1,7 +1,7 @@
 LoveMaybe::Application.routes.draw do
   resources :date_responses
 
-  resources :date_requests
+  resources :date_requests, only: [:create, :destroy, :edit, :update, :new]
 
   resources :user_dating_usernames
 

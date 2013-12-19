@@ -1,7 +1,11 @@
 <div style="background: #fff; position: absolute; top: 0px; left: 0px; height: 90px; width: 150%;" ></div>
 <div class="large-12 columns" style="height:75px; background: #fff; margin-top: 15px;">
-			<%= link_to image_tag('master-logo.png'), root_path %>
+	<%= link_to image_tag('master-logo.png'), root_path %>
+	<% if signed_in? %>
+		<%= link_to "Sign out", signout_path, method: "delete", style: "float: right; margin-right: 10px;" %>
+	<% else %>
 			<a href="#" class="button tiny alert" style="float: right;">Log In</a>
 			<a href="<%= new_user_path%>" class="button tiny alert" style="float: right; margin-right: 10px;">Sign Up</a>
+		<% end %>
 		</div>
 		<div style="clear: both;"></div>
