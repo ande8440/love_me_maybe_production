@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
 	has_many :date_responses, through: :date_requests
 	accepts_nested_attributes_for :user_dating_usernames, :allow_destroy => true	
 	VALID_HANDLE_REGEX = /\A([!#$&-;=?-\[\]_a-z~]|%[0-9a-fA-F]{2})+\z/
-	validates :user_handle, presence: true, length: { maximum: 250 }, format: {with: VALID_HANDLE_REGEX}, uniqueness: { case_sensitive: false }
-	validates :url_slug, presence: true, length: { maximum: 250 }, uniqueness: { case_sensitive: false }
+	validates :user_handle, presence: true, length: { maximum: 250 }, format: {with: VALID_HANDLE_REGEX}, uniqueness: { case_sensitive: false }, exclusion: {in: %w[signup signin signout contact]}
+	validates :url_slug, presence: true, length: { maximum: 250 }, uniqueness: { case_sensitive: false }, exclusion: {in: %w[signup signin signout contact]}
 	validates :first_name, presence: true, length: { maximum: 75 }
 	validates :last_name, presence: true, length: { maximum: 75 }
 
