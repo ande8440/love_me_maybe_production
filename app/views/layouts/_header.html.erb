@@ -4,7 +4,7 @@
 	<% if signed_in? %>
 		<%= link_to "Sign out", signout_path, method: "delete", style: "float: right; margin-right: 10px;" %>
 	<% else %>
-			<a href="#" class="button tiny alert" style="float: right;">Log In</a>
+		<a href=<%=signin_path%> class="button tiny alert" style="float: right;">Log In</a>
 			<a href="<%= new_user_path%>" class="button tiny alert" style="float: right; margin-right: 10px;">Sign Up</a>
 		<% end %>
 		</div>

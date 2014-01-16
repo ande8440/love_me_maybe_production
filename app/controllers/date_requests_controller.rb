@@ -47,7 +47,7 @@ class DateRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @date_request.update(date_request_params)
-        format.html { redirect_to @date_request, notice: 'Date request was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Date request was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -61,7 +61,7 @@ class DateRequestsController < ApplicationController
   def destroy
     @date_request.destroy
     respond_to do |format|
-      format.html { redirect_to date_requests_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end
