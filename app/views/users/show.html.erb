@@ -1,3 +1,11 @@
+<%= render 'layouts/header' %>
+
+<div style="background: #fff; margin-top: 50px; margin-left: auto; margin-right: auto; width: 90%; padding: 20px; border-radius: 5px; box-shadow: 0 0 1px 1px;">
+<h3 style="margin-bottom: 35px;">Join LoveMeMaybe today</h3>
+
+
+<div style="clear: both;"></div>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -23,8 +31,9 @@
 <p>
   <strong>User handle:</strong>
   <%= @user.user_handle %>
-</p>
+  </p>
+
+  </div>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

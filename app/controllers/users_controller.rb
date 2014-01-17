@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+	      @user.user_dating_usernames.each {|name| name.destroy unless name.dating_site_username.length > 0 }
 	      sign_in @user
         format.html { redirect_to root_path, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
@@ -44,8 +45,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+	    @user.user_dating_usernames.destroy_all
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+	      @user.user_dating_usernames.each {|name| name.destroy unless name.dating_site_username.length > 0 }
+        format.html { redirect_to root_url+@user.url_slug, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
