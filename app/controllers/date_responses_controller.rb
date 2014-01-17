@@ -15,6 +15,11 @@ class DateResponsesController < ApplicationController
   # GET /date_responses/new
   def new
     @date_response = DateResponse.new
+
+    respond_to do |format|
+		  format.html
+		  format.js
+	  end
   end
 
   # GET /date_responses/1/edit

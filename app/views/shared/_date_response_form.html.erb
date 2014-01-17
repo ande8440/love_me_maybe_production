@@ -1,0 +1,73 @@
+<%= form_for(@date_response) do |f| %>
+  <% if @date_response.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@date_response.errors.count, "error") %> prohibited this date_request from being saved:</h2>
+
+      <ul>
+      <% @date_response.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <style> #date-rating-yes label {font-weight:700;color:#999999; opacity:.4;}
+	  #date-rating-yes label:hover {color:green;opacity:1;}
+	  #date-rating-friend label {font-weight:700;color:#999999; opacity:.4;}
+	  #date-rating-friend label:hover {color:orange;opacity:1;}
+	  #date-rating-no label {font-weight:700;color:#999999; opacity:.4;}
+	  #date-rating-no label:hover {color:red;opacity:1;}
+	  </style>
+  <div class="large-12" style="margin-top:60px;">
+  <div class="large-12" style="margin: 0 auto 0 auto; text-align:center;">
+
+  <div class="large-2 field" style="display: inline-block;text-align:left;">
+    <%= f.label :date_response_first_name %><br>
+    <%= f.text_field :date_response_first_name %>
+  </div>
+  <div class="large-2 field" style="display: inline-block;text-align:left">
+    <%= f.label :date_response_last_name %><br>
+    <%= f.text_field :date_response_last_name %>
+  </div>
+  <div class="large-2 field" style="display: inline-block;text-align:left">
+    <%= f.label :date_response_phone %><br>
+    <%= f.number_field :date_response_phone %>
+  </div>
+  <div class="large-2 field" style="display: inline-block;text-align:left">
+    <%= f.label :date_response_username %><br>
+    <%= f.text_field :date_response_username %>
+  </div>
+  <div class="large-2 field" style="display: inline-block;text-align:left">
+    <%= f.label :date_response_site %><br>
+    <%= f.select( :date_response_site, [['OkCupid','OkCupid'],['Tinder','Tinder'],['eHarmony','eHarmony'],['Match.com','Match.com'],['PlentyofFish','PlentyofFish'],['Zoosk','Zoosk'],['Christian Mingle','Christian Mingle'],['DateHookup','DateHookup'],['HowAboutWe','HowAboutWe'],['Coffee Meets Bagel','Coffee Meets Bagel'],['BlackPeopleMeet','BlackPeopleMeet'],['JDate','JDate'],['Badoo','Badoo'],['Meetme','Meetme'],['Skout','Skout'],['SeniorPeopleMeet','SeniorPeopleMeet']], { :prompt => 'Select'}, style: "height: 32px;") %>
+  </div>
+  </div>
+
+  <div class="large-8" style="margin: 20px auto 0 auto; text-align:center;"><h5>What'll it be?</h5></div>
+	  <div class="large-8" style="margin: 15px auto 0 auto; text-align:center;">
+		  
+  <div class="large-3 field" style="display: inline-block; color:green">
+    <%= f.radio_button( :date_response_rating, "Yes") %>
+    <span style="display: inline-block;" id="date-rating-yes"><%= f.label :date_response_rating, "Another Date" %></span>
+  </div>
+  <div class="large-3 field" style="display: inline-block; color:orange">
+    <%= f.radio_button( :date_response_rating, "Friends") %>
+    <span style="display: inline-block;" id="date-rating-friend"><%= f.label :date_response_rating, "Let's be friends!"%></span>
+  </div>
+  <div class="large-3 field" style="display: inline-block;" id="date-rating-no">
+   <%= f.radio_button( :date_response_rating, "No") %>
+	  <span style="display: inline-block;"><%= f.label :date_response_rating, "Call it quits" %></span>
+  </div>
+  </div>
+  <div class="field" style="text-align:center;">
+	  <h5 style="margin-top:20px; margin-bottom:0px;">Comment</h5><br>
+    <%= f.text_area :date_response_comment %>
+  </div>
+  <div class="actions large-12" style="margin: 0 auto 0 auto; text-align:center;">
+	  <%= f.submit "Submit", class: "button tiny", style: "display:inline; margin-right: 15px;" %>
+	  
+  </div>
+  
+  </div>
+<% end %>
+

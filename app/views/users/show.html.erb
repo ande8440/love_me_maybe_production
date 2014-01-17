@@ -41,18 +41,14 @@
 	</div>
   	</div>
 
-  	
-
-
-	
 
 	<div style="clear: both;"></div>
 
 
-	<div class="large-11" style="margin: 0 auto; text-align: center; margin-top: 45px; padding-bottom:125px;">
+	<div id="response-area" class="large-11" style="margin: 0 auto; text-align: center; margin-top: 45px; padding-bottom:125px;">
 		<h3 style="margin-bottom: 40px;">Find out if <%=@user.user_handle%> wants to go out again or be friends.</h3>
 		<h5 style="font-weight:normal;">Have you been on a date with <%=@user.user_handle%>?</h5>
-		<a href="#" class="button success tiny" style="margin: 3px;width: 60px;">YES</a>
+		<%= link_to 'YES', new_date_response_path, remote: :true, class: "button success tiny", style: "margin: 3px;width: 60px;" %>
 		<a href="#" class="button alert tiny" style="margin: 3px; width: 60px;">NO</a>
 		<h5 style="font-weight:normal;margin-top: 25px;">Don't worry! If you didn't like <%=@user.user_handle%>, or if you want different things, then your response will be aggregated with others to remain anonymous</h5>
 
