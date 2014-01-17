@@ -1,37 +1,68 @@
 <%= render 'layouts/header' %>
 
-<div style="background: #fff; margin-top: 50px; margin-left: auto; margin-right: auto; width: 90%; padding: 20px; border-radius: 5px; box-shadow: 0 0 1px 1px;">
-<h3 style="margin-bottom: 35px;">Join LoveMeMaybe today</h3>
+<div style="background: #fff; margin-top: 50px; margin-left: auto; margin-right: auto; width: 90%; padding: 10px 15px 0 15px; border-radius: 5px; box-shadow: 0 0 1px 1px;">
+	
+	<p id="notice"><%= notice %></p>
 
+	<div class="large-11" style="float: left; padding: 0 50px;">
+		<% if @user.image? %>
+			<div class="large-2" style="height:150px;width: 150px;float:left;margin-top:22px;"><%= image_tag @user.image_url(:thumb), style: "box-shadow: 0px 0px 0px 2.5px;"%></div>
+			<% else %>
 
-<div style="clear: both;"></div>
+				<div class="large-2" style="height:150px;width: 150px;;float:left;margin-top:22px;"><%= image_tag('profile-picture-holder.png', style: "box-shadow: 0px 0px 0px 2.5px;") %></div>
+			<% end %>
 
-<p id="notice"><%= notice %></p>
+			<% if @user == current_user %> 
+				<span style="float:right;"><%= link_to 'Edit Profile', edit_user_path(current_user), style: "float: right;margin-top:15px; margin-left:10px;" %></span>
+			<% end %>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
+		<div class="large-4" style="float:left;">
+
+		<h2 style="margin-bottom:2px;"><%= @user.user_handle %></h2>
+
+		<p style="margin-bottom: 2px;">
+		  <%= @user.first_name %> <%= @user.last_name %> 
+		  </p>
+	  </div>
+
+	  <div class="large-9" style="float: left;">
+		  <p>
+<% if @user.user_dating_usernames.count > 0 %>
+	<% @user.user_dating_usernames.each do |name| %>
+	<% if name == @user.user_dating_usernames.last %>
+		<%= name.dating_site_website + ": " + name.dating_site_username %>
+	<% else %>
+		<%= name.dating_site_website + ": " + name.dating_site_username + " | " %>
+	<% end %>
+	<%end%>
+<%end%>
 </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+	</div>
+  	</div>
 
-<p>
-  <strong>User email:</strong>
-  <%= @user.email %>
-</p>
+  	
 
-<p>
-  <strong>User phone:</strong>
-  <%= @user.user_phone %>
-</p>
 
-<p>
-  <strong>User handle:</strong>
-  <%= @user.user_handle %>
-  </p>
+	
+
+	<div style="clear: both;"></div>
+
+
+	<div class="large-11" style="margin: 0 auto; text-align: center; margin-top: 45px; padding-bottom:125px;">
+		<h3 style="margin-bottom: 40px;">Find out if <%=@user.user_handle%> wants to go out again or be friends.</h3>
+		<h5 style="font-weight:normal;">Have you been on a date with <%=@user.user_handle%>?</h5>
+		<a href="#" class="button success tiny" style="margin: 3px;width: 60px;">YES</a>
+		<a href="#" class="button alert tiny" style="margin: 3px; width: 60px;">NO</a>
+		<h5 style="font-weight:normal;margin-top: 25px;">Don't worry! If you didn't like <%=@user.user_handle%>, or if you want different things, then your response will be aggregated with others to remain anonymous</h5>
+
+		<div class="large-5" style="margin: 65px auto 0 auto;"><span style="float: left; margin-bottom:10px;">Want to know about your other dates? </span><%=link_to "Sign up!", signup_path, style: "float: left; margin-bottom: 15px; margin-left:5px; display:inline;" %>
+
+
+	</div>
+	</div>
+
+
 
   </div>
 

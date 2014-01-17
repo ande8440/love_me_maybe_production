@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, :html => {:multipart => true} do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -16,6 +16,10 @@
 	<p style="font-size: 18px;"><strong>Note:</strong> any information provided remains secure and strictly confidential, and it will only be used to match you with individuals you have dated.</p>
   </div>
 	<div class="large-8" style="display: inline-block;">
+  <div class="large-5 field" style="display: block; margin-right: 10px;margin-bottom: 15px;">
+    <%= f.label :image, "Profile Picture" %><br>
+    <%= f.file_field :image %>
+  </div>
   <div class="large-5 field" style="display: inline-block; margin-right: 10px;">
     <%= f.label :first_name, "First Name*" %><br>
     <%= f.text_field :first_name %>

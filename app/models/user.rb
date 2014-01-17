@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
 	attr_accessor :password, :password_confirmation
 
+	mount_uploader :image, ImageUploader
+
 	has_many :user_dating_usernames, dependent: :destroy
 	has_many :date_requests, dependent: :destroy
 	has_many :date_responses, through: :date_requests
