@@ -17,9 +17,12 @@
 	  #date-rating-friend label:hover {color:orange;opacity:1;}
 	  #date-rating-no label {font-weight:700;color:#999999; opacity:.4;}
 	  #date-rating-no label:hover {color:red;opacity:1;}
-	  </style>
+  </style>
+
+  <% if current_user.nil? %>
+
   <div class="large-12" style="margin-top:60px;">
-  <div class="large-12" style="margin: 0 auto 0 auto; text-align:center;">
+	  <div class="large-12" style="margin: 0 auto 0 auto; text-align:center;">		  
 
   <div class="large-2 field" style="display: inline-block;text-align:left;">
     <%= f.label :date_response_first_name %><br>
@@ -63,11 +66,53 @@
 	  <h5 style="margin-top:20px; margin-bottom:0px;">Comment</h5><br>
     <%= f.text_area :date_response_comment %>
   </div>
-  <div class="actions large-12" style="margin: 0 auto 0 auto; text-align:center;">
-	  <%= f.submit "Submit", class: "button tiny", style: "display:inline; margin-right: 15px;" %>
-	  
+  
+  <%= f.hidden_field :date_requester_id, value: @user.id %>
+
+  </div>
+
+  <% else %>
+
+	  <div class="large-12" style="margin-top:60px;">
+		  <div class="large-12" style="margin: 0 auto 0 auto; text-align:center;">
+
+    <%= f.hidden_field :date_response_first_name, value: current_user.first_name %>
+    <%= f.hidden_field :date_response_last_name, value: current_user.last_name %>
+    <%= f.hidden_field :date_response_phone, value: current_user.user_phone %>
+    <%= f.hidden_field :date_requester_id, value: @user.id %>
+    <%= f.hidden_field :date_responder_id, value: current_user.id %>
+  </div>
+
+
+  <div class="large-8" style="margin: 20px auto 0 auto; text-align:center;"><h5>What'll it be?</h5></div>
+	  <div class="large-8" style="margin: 15px auto 0 auto; text-align:center;">
+		  
+  <div class="large-3 field" style="display: inline-block; color:green">
+    <%= f.radio_button( :date_response_rating, "Yes") %>
+    <span style="display: inline-block;" id="date-rating-yes"><%= f.label :date_response_rating, "Another Date" %></span>
+  </div>
+  <div class="large-3 field" style="display: inline-block; color:orange">
+    <%= f.radio_button( :date_response_rating, "Friends") %>
+    <span style="display: inline-block;" id="date-rating-friend"><%= f.label :date_response_rating, "Let's be friends!"%></span>
+  </div>
+  <div class="large-3 field" style="display: inline-block;" id="date-rating-no">
+   <%= f.radio_button( :date_response_rating, "No") %>
+	  <span style="display: inline-block;"><%= f.label :date_response_rating, "Call it quits" %></span>
+  </div>
+  </div>
+  <div class="field" style="text-align:center;">
+	  <h5 style="margin-top:20px; margin-bottom:0px;">Comment</h5><br>
+    <%= f.text_area :date_response_comment %>
   </div>
   
   </div>
+
+  <% end %>
+
+  <div class="actions large-12" style="margin: 0 auto 0 auto; text-align:center;">
+	  <%= f.submit "Submit", remote: :true, class: "button tiny", style: "display:inline; margin-right: 15px;" %>
+	  
+  </div>
+
 <% end %>
 

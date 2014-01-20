@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+	  @date_request = DateRequest.find(session[:request]) if session[:request] != nil
+	  @date_response = DateResponse.find(session[:your_response]) if session[:your_response] != nil
+	  session[:your_response] = nil
+	  session[:request] = nil
 	  
   end
 

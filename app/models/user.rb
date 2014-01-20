@@ -63,7 +63,6 @@ class User < ActiveRecord::Base
 	 end
 
 
-
 	 #def should_validate_password?
 	  # if self.provider.present? && self.uid.present?
 	#	    false

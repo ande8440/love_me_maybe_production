@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117034803) do
+ActiveRecord::Schema.define(version: 20140120214700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20140117034803) do
     t.string   "date_response_rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "date_requester_id"
+    t.integer  "date_responder_id"
   end
 
   create_table "user_dating_usernames", force: true do |t|
@@ -72,5 +74,11 @@ ActiveRecord::Schema.define(version: 20140117034803) do
   add_index "users", ["url_slug"], name: "index_users_on_url_slug", using: :btree
   add_index "users", ["user_handle"], name: "index_users_on_user_handle", unique: true, using: :btree
   add_index "users", ["user_phone"], name: "index_users_on_user_phone", unique: true, using: :btree
+
+  create_table "yes_sayings", force: true do |t|
+    t.string   "saying"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
