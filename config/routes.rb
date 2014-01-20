@@ -1,4 +1,6 @@
 LoveMaybe::Application.routes.draw do
+  resources :yes_sayings
+
   resources :date_responses
 
   resources :date_requests, only: [:create, :destroy, :edit, :update, :new]

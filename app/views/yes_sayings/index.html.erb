@@ -1,0 +1,27 @@
+<h1>Listing yes_sayings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Saying</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @yes_sayings.each do |yes_saying| %>
+      <tr>
+        <td><%= yes_saying.saying %></td>
+        <td><%= link_to 'Show', yes_saying %></td>
+        <td><%= link_to 'Edit', edit_yes_saying_path(yes_saying) %></td>
+        <td><%= link_to 'Destroy', yes_saying, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Yes saying', new_yes_saying_path %>

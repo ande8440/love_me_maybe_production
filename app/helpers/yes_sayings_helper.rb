@@ -1,0 +1,2 @@
+module YesSayingsHelper
+end
