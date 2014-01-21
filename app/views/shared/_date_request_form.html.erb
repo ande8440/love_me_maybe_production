@@ -1,3 +1,5 @@
+
+
 <%= form_for(@date_request) do |f| %>
   <% if @date_request.errors.any? %>
     <div id="error_explanation">
@@ -31,7 +33,7 @@
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
     <%= f.label :date_phone %><br>
-    <%= f.number_field :date_phone %>
+    <%= f.text_field :date_phone, {id: 'request_phone'} %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
     <%= f.label :date_username %><br>
