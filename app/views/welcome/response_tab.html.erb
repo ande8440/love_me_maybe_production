@@ -5,7 +5,7 @@
 
 			<div style="background: url(<%= asset_path 'background.png' %>) repeat; margin-top: 50px; margin-left: auto; margin-right: auto; width: 90%; border-radius: 5px; /*box-shadow: 0 0 1px 1px;*/">
 				<div style="width: 30%;height: 60px; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; display: inline; float:left; padding: 20px; text-align: center;"><%= link_to 'Requests', root_path, class: "request-link" %></div>
-				<div style="width: 30%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; text-align: center;background: #f5f5f5;border-radius: 5px 5px 0px 0px;">Responses (<%= @response_count %>)</div>
+				<div style="width: 30%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; text-align: center;background: #fff;border-radius: 5px 5px 0px 0px;color: #2ba6cb;font-weight: 700;">Responses (<%= @response_count %>)</div>
 
 				<div style="width: 100%; background: #fff; border-radius: 5px 5px 5px 5px; margin-top:0px; padding: 30px 10px 30px 30px;">
 					<%= image_tag('link-link.png', style: "float: left;") %>
@@ -13,23 +13,62 @@
 					<%= image_tag('small-arrow.png', style: "float: left; margin-left: 10px;") %>
 					<p style="margin-left: 10px; float: left; font-style: italic; font-weight: 900;">Post to your dating &amp; social media profiles or send to date</p>
 					<div style="clear: both;"></div>
-					<h4 style="margin-top: 0px; color: #444; font-size: 19px;">Matches</h4>
+					<h4 style="margin-top: 20px; color: #444; font-size: 19px;">Matches</h4>
 
-					<div class="small-2" style="float:left; margin: 10px;">First Name</div>
-					
-					<div class="small-2" style="float:left;margin: 10px;">Phone Number</div>
-					<div class="small-2" style="float:left;margin: 10px;">Username</div>
-					<div class="small-2" style="float:left;margin: 10px;">Website</div>
+				<table style="border: none; width: 100%;">
+  <thead>
+<tr style="background: #fff; font-size: 17px; text-decoration: underline;">
+      <th>First Name</th>
+      <th>Phone</th>
+      <th>Dating Username</th>
+      <th>Dating Site</th>
+      <th>Rating</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+	  <% @matches.each do |match| %>
+		  <% @date_request = DateRequest.find(match.date_request_id) %>
+      <tr style="margin-right: 10px;" >
+        <td style="margin-right: 10px;"><%= @date_request.first_name %></td>
+        <td><%= @date_request.date_phone %></td>
+        <td><%= @date_request.date_username %></td>
+        <td><%= @date_request.date_username_site %></td>
+        <td><%= @date_request.date_rating %></td>
+        <td><%= link_to 'Edit', edit_date_request_path(@date_request), remote: :true,  id: "home-edit-date-button" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 					<div style="clear: both;"></div>
-					<% @responses.each do |response| %>
-						<% request = DateRequest.find(response.date_request_id) %>
-						<div class="large-2" style="float:left;margin: 10px;"><%= request.first_name %></div>
-					
-						<div class="large-2" style="float:left;margin: 10px;"><%= request.date_phone %></div>
-						<div class="large-2" style="float:left;margin: 10px;"><%= request.date_username %></div>
-						<div class="large-2" style="float:left;margin: 10px;"><%= request.date_username_site %></div>
-						<div style="clear: both;"></div>
-					<% end %>
+				
+					<% if @anonymous_responses.count < @anonymous_min_response %>
+						<h4 style="margin-top: 40px; color: #444; font-size: 19px;">Anonymous Responses</h4>
+						<h6 style="font-weight:300;">Responses from dates who are not matches are anonymous. You need <span style="font-weight: 700; text-decoration: underline;"><%= @anonymous_min_response - @anonymous_responses.count %></span> more <%= @anonymous_min_response - @anonymous_responses.count > 1 ? 'responses' : 'response' %> to view anonymous feedback.</h6>
+					<% else %>
+
+<table style="border: none; width: 100%;">
+  <thead>
+<tr style="background: #fff; margin-top: 40px; color: #444; font-size: 19px;">
+      <th style="padding: 0 0 20px 0; margin-top: 20px; color: #444; font-size: 19px;">Anonymous Responses</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+	  <% @anonymous_responses.each do |ar| %>
+		  <% @date_request = DateRequest.find(ar.date_request_id) %>
+      <tr style="margin-right: 10px;" >
+        <td style="margin-right: 10px;"><%= ar.date_response_comment %></td>
+        <td><%= link_to 'Edit', edit_date_request_path(@date_request), remote: :true,  id: "home-edit-date-button" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>
 				
 					<div id="date_request_area"></div>
 					

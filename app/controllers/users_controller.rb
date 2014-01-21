@@ -49,9 +49,18 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-	    @user.user_dating_usernames.destroy_all
+	@prev_usernames = @user.user_dating_usernames
+	@prev_username_ids = []
+	@prev_usernames.each {|usrname| @prev_username_ids << usrname.id}
       if @user.update(user_params)
+	      @prev_username_ids.each do |id|
+	UserDatingUsername.find(id).destroy
+	      end
 	      @user.user_dating_usernames.each {|name| name.destroy unless name.dating_site_username.length > 0 }
+
+	  cookies.permanent[:remember_token] = @user.remember_token
+
+
         format.html { redirect_to root_url+@user.url_slug, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else

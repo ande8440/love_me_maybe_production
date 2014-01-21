@@ -22,12 +22,12 @@ class User < ActiveRecord::Base
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-	validates :password, presence: true, length: { minimum: 6 }#, :on => :create #, :if => :should_validate_password?
-	validates :password_confirmation, presence: true#,:on => :create #, :if => :should_validate_password?
+	validates :password, presence: true, length: { minimum: 6 }, :on => :create #, :if => :should_validate_password?
+	validates :password_confirmation, presence: true,:on => :create #, :if => :should_validate_password?
 
 	before_save { |user| user.email = email.downcase }
 	before_save :create_remember_token
-	validates_confirmation_of :password#, :on => :create#, :if => :should_validate_password?
+	validates_confirmation_of :password, :on => :create#, :if => :should_validate_password?
 
 	before_validation :generate_slug
 

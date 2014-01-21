@@ -1,3 +1,5 @@
+<script></script>
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -31,7 +33,7 @@
   </div>
   <div class="large-5 field" style="display: inline-block;">
     <%= f.label :user_phone, "Phone Number*" %><br>
-    <%= f.text_field :user_phone %>
+    <%= f.text_field :user_phone, {id: "phone_new"} %>
   </div>
   <div style="clear:both;"></div>
 
