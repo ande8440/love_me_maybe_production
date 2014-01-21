@@ -1,0 +1,27 @@
+
+			<%= render 'layouts/header' %>
+
+			<div style="background: url(<%= asset_path 'background.png' %>) repeat; margin-top: 50px; margin-left: auto; margin-right: auto; width: 90%; border-radius: 5px; /*box-shadow: 0 0 1px 1px;*/">
+				<div style="width: 30%;height: 60px; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; display: inline; float:left; padding: 20px; text-align: center;"><%= link_to 'Requests', root_path %></div>
+				<div style="width: 30%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; text-align: center;background: #f5f5f5;border-radius: 5px 5px 0px 0px;">Responses</div>
+
+				<div style="width: 100%; background: #fff; border-radius: 0px 5px 5px 5px; margin-top:0px; padding: 30px;">
+					<%= image_tag('link-link.png', style: "float: left;") %>
+				<h5 style="display:inline; float: left;"> <a href=<%= root_url+@user.url_slug%>><%= root_url+@user.url_slug%></a> </h5>
+					<%= image_tag('small-arrow.png', style: "float: left; margin-left: 10px;") %>
+					<p style="margin-left: 10px; float: left; font-style: italic; font-weight: 900;">Post to your dating &amp; social media profiles or send to date</p>
+					<div style="clear: both;"></div>
+					<h4 style="margin-top: 0px; color: #444; font-size: 19px;">Dates</h4>
+					
+					<%= render 'index' %>
+					<%= link_to 'Add Date', new_date_request_path, remote: :true, class: "button small", id: "home-add-date-button" %>
+					<div id="date_request_area"></div>
+					
+				</div>
+
+</div>
+<div style="clear: both;"></div>
+
+<%= link_to 'Back', users_path %>
+
+

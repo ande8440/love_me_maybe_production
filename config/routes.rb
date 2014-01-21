@@ -15,6 +15,8 @@ LoveMaybe::Application.routes.draw do
 
   get '/signup', to: 'users#new'
 
+  get '/responses', to: 'welcome#response_tab'
+
   resources :users, except: [:show, :edit]
 
   resources :users, path: "", only: [:show, :edit]
