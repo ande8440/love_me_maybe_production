@@ -15,5 +15,5 @@ jQuery ->
     $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
 
-$("#phone_new").mask("(999) 999-9999");
+#$("#phone_new").mask("(999) 999-9999");
 
