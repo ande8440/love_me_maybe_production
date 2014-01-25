@@ -1,3 +1,21 @@
+<meta property="og:title" content="LoveMeMaybe" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://lovememaybe.co" />
+<meta property="og:site_name" content="LoveMeMaybe" />
+<meta property="og:description" content="Find out what your dates thought about you!" />
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=238335122979846";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
 <style>.response-link { color: #ffffff; }
 .response-link:hover { color: #ffffff; text-decoration: underline; }</style>
 
@@ -55,9 +73,16 @@
 		  <li>Use with any of the most popular online dating apps, and even get feedback from offline dates</li>
   </ol>
   <a href="<%= new_user_path%>" class="button" style="margin-left: 1.5em;">Get started for free</a>
+
+    <div>
+  <div style="margin: 25px 1% 0 5%; display:inline-block; float:left;" class="fb-like" data-href='http://lovememaybe.co' data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+<div style="margin: 25px 15% 0 1%; display:inline-block;float:left;"><a style="display:inline-block; float:left;" href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url=<%= root_url %> data-text="Find out how your date went with LoveMeMaybe" data-hashtags="SecondChances,FriendZone">Tweet</a></div>
+  </div>
   
   
   </div>
+  <div style:"clear:both;"></div>
+
   </div>
 
   <% end %>
