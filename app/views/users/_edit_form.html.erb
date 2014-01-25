@@ -1,9 +1,9 @@
 <%= form_for @user, :html => {:multipart => true} do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <div id="error_explanation" style="background: #F5A0A0;border: 1px solid;margin-bottom: 25px;padding: 10px;">
+      <h5 style="margin-bottom: 0px;"><%= pluralize(@user.errors.count, "error") %> prohibited you from updating your profile:</h5>
 
-      <ul>
+      <ul style="padding: 0 0 0 30px;margin-bottom: 5px;">
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
@@ -14,8 +14,19 @@
   <div class="large-12" >
 	  <div class="large-4" style="float: right; display: inline-block;">
 	<p style="font-size: 18px;"><strong>Note:</strong> any information provided remains secure and strictly confidential, and it will only be used to match you with individuals you have dated.</p>
-  </div>
-	<div class="large-8" style="display: inline-block;">
+</div>
+
+
+<div class="large-8" style="display: inline-block;">
+
+<% if @user.image? %>
+			<div class="large-2" style="height:150px;width: 150px;float:left;margin-top:22px;"><%= image_tag @user.image_url(:thumb), style: "box-shadow: 0px 0px 0px 2.5px;"%></div>
+			<% else %>
+
+				<div class="large-2" style="height:150px;width: 150px;;float:left;margin-top:22px;"><%= image_tag('profile-picture-holder.png', style: "box-shadow: 0px 0px 0px 2.5px;") %></div>
+			<% end %>
+			<div style="clear:both;"></div>
+
   <div class="large-5 field" style="display: block; margin-right: 10px;margin-bottom: 15px;">
     <%= f.label :image, "Profile Picture" %><br>
     <%= f.file_field :image %>
@@ -39,8 +50,60 @@
   </div>
   <div style="clear:both;"></div>
 
-	  <%= f.fields_for :user_dating_usernames do |builder| %>
-		  <%= render 'user_dating_username_fields', f: builder %>
+  <h4>Online Dating Usernames</h4>
+
+  <% @user.user_dating_usernames.each do |name|%>
+
+	  <div class="large-5 field" style="display: inline-block; margin-right: 10px;">
+<span style="-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	width: 100%;
+border-radius: 0;
+background-color: white;
+font-family: inherit;
+border: 1px solid #cccccc;
+-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+color: rgba(0, 0, 0, 0.75);
+font-size: 0.875em;
+display:inline-block;
+margin: 0 10px 1em 0;
+padding: 0.5em;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
+-moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
+transition: box-shadow 0.45s, border-color 0.45s ease-in-out;"> <%= name.dating_site_username %></span>
+		  </div>
+  <div class="large-5 field" style="display: inline-block; ">
+<span style=" -webkit-appearance: none;
+	  -webkit-border-radius: 0;
+border-radius: 0;
+background-color: white;
+font-family: inherit;
+border: 1px solid #cccccc;
+-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+color: rgba(0, 0, 0, 0.75);
+display:inline-block;
+width: 100%;
+font-size: 0.875em;
+margin: 0 0 1em 0;
+padding: 0.5em;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
+-moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
+transition: box-shadow 0.45s, border-color 0.45s ease-in-out;"><%= name.dating_site_website %></span>
+		  </div>
+		  <div class="field" style="width: 5%; display: inline-block; padding-top:9px;">
+		  <%= link_to 'Delete', name, style: 'margin: 10px 0 0 10px;', method: :delete, data: { confirm: 'Are you sure?' } %>
+	  </div>
+	   <div style="clear:both;"></div>
+
+		 
 	  <% end %>
 	  <%= link_to_add_fields "Add Another Username +", f, :user_dating_usernames %>
 	  

@@ -6,4 +6,3 @@ jQuery ->
     $(this).toggle()
     event.preventDefault()
 
-$("#request_phone").mask("(999) 999-9999");

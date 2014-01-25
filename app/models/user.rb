@@ -9,13 +9,13 @@ class User < ActiveRecord::Base
 	has_many :date_responses, through: :date_requests
 	accepts_nested_attributes_for :user_dating_usernames, :allow_destroy => true	
 	VALID_HANDLE_REGEX = /\A([!#$&-;=?-\[\]_a-z~]|%[0-9a-fA-F]{2})+\z/
-	validates :user_handle, presence: true, length: { maximum: 250 }, format: {with: VALID_HANDLE_REGEX}, uniqueness: { case_sensitive: false }, exclusion: {in: %w[signup signin signout contact]}
-	validates :url_slug, presence: true, length: { maximum: 250 }, uniqueness: { case_sensitive: false }, exclusion: {in: %w[signup signin signout contact]}
+	validates :user_handle, presence: true, length: { maximum: 250 }, format: {with: VALID_HANDLE_REGEX}, uniqueness: { case_sensitive: false }, exclusion: {in: %w[signup signin signout contact responses]}
+	validates :url_slug, presence: true, length: { maximum: 250 }, uniqueness: { case_sensitive: false }, exclusion: {in: %w[signup signin signout contact responses]}
 	validates :first_name, presence: true, length: { maximum: 75 }
 	validates :last_name, presence: true, length: { maximum: 75 }
 
 	# still need to do whole (312) 343-2234 format thing BE and FE
-	validates :user_phone, presence: true, length: { maximum: 75 }
+	validates :user_phone, presence: true, length: { minimum: 9, maximum: 9 }
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence:   true,

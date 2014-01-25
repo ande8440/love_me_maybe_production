@@ -2,4 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 #
-$("#request_phone").mask("(999) 999-9999");
+#
+jQuery ->
+  $("#phone_new2").mask("(999) 999-9999");
