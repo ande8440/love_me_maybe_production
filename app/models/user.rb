@@ -22,12 +22,12 @@ class User < ActiveRecord::Base
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-	validates :password, presence: true, length: { minimum: 6 }, :on => :create #, :if => :should_validate_password?
-	validates :password_confirmation, presence: true,:on => :create #, :if => :should_validate_password?
+	validates :password, presence: true, length: { minimum: 6 }, :if => :password_digest_changed?
+	validates :password_confirmation, presence: true,:if => :password_digest_changed?
 
 	before_save { |user| user.email = email.downcase }
 	before_save :create_remember_token
-	validates_confirmation_of :password, :on => :create#, :if => :should_validate_password?
+	validates_confirmation_of :password, :if => :password_digest_changed?
 
 	before_validation :generate_slug
 
@@ -62,12 +62,26 @@ class User < ActiveRecord::Base
 	  self.remember_token = SecureRandom.urlsafe_base64
 	 end
 
+	 def send_password_reset
+		 generate_token(:password_reset_token)
+		 self.password_reset_sent_at = Time.zone.now
+		 save!
+		 UserMailer.password_reset(self).deliver
+	 end
 
-	 #def should_validate_password?
-	  # if self.provider.present? && self.uid.present?
-	#	    false
-	 #   else
-	#	    true
-	 #   end
-	  #end
+	def generate_token(column)
+	  begin
+	    self[column] = SecureRandom.urlsafe_base64
+	  end while User.exists?(column => self[column])
+	end
+	 
+
+
+	 def should_validate_password?
+	   if params[:user][:password]
+		    true
+	    else
+		    false
+	    end
+	 end
 end

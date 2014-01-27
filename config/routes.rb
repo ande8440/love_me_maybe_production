@@ -1,4 +1,5 @@
 LoveMaybe::Application.routes.draw do
+  
   resources :yes_sayings
 
   resources :date_responses
@@ -22,6 +23,8 @@ LoveMaybe::Application.routes.draw do
   resources :users, path: "", only: [:show, :edit]
 
   resources :sessions, only: [:new, :create, :destroy]	
+
+  resources :password_resets
 
  # get 'signout', to: 'sessions#destroy', as: 'signout' 
 

@@ -62,3 +62,4 @@ gem 'zurb-foundation'
 
 gem 'bcrypt-ruby', '3.0.1'
 
+gem 'unicorn', group: :production

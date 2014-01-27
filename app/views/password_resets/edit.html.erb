@@ -1,0 +1,32 @@
+<% provide(:title, 'Reset Password') %>
+
+<%= render 'layouts/header' %>
+
+<div style="background: #fff; margin-top: 50px; margin-left: auto; margin-right: auto; width: 90%; padding: 30px; border-radius: 5px; box-shadow: 0 0 1px 1px; text-align:center;">
+
+<%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+  <% if @user.errors.any? %>
+     <div id="error_explanation" class="large-7" style="background: #F5A0A0;border: 1px solid;margin: 0 auto 25px auto;padding: 10px; text-align:left;">
+      <h5 style="margin-bottom: 0px;">Form is invalid</h5>
+
+      <ul style="padding: 0 0 0 30px;margin-bottom: 5px;">
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="large-4 field" style="margin: 0 auto;">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="large-4 field" style="margin: 0 auto;">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions"><%= f.submit "Update Password", class: "button small" %></div>
+<% end %>
+
+
+</div>
+

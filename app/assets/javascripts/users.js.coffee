@@ -14,6 +14,7 @@ jQuery ->
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
+    event.stopImmediatePropagation()
 
 #$("#phone_new").mask("(999) 999-9999");
 

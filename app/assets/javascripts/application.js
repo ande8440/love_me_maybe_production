@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery.maskedinput
 //= require jquery_ujs
-//= require foundation
 //= require turbolinks
 //= require_tree .
 

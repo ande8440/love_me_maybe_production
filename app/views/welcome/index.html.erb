@@ -60,7 +60,13 @@
 			<% else %>
 				<a href=<%= signin_path%> class="button tiny alert" style="float: right;">Log In</a>
 			<a href="<%= new_user_path%>" class="button tiny alert" style="float: right; margin-right: 10px;">Sign Up</a>
-			<% end %>
+		<% end %>
+
+		<div style:"clear:both;"></div>
+
+   <% flash.each do |key, value| %>
+	  <div class="large-8 alert alert-<%= key %>" style="background: #FFE48E;border: 1px solid;margin: 0 auto 25px auto;padding: 10px; text-align:center;"><%= value %></div>
+  <% end %>
 		</div>
 
 	<div class="large-12 columns" style="margin-top: 100px;">
@@ -83,7 +89,11 @@
   </div>
   <div style:"clear:both;"></div>
 
+ 
+
   </div>
+
+   
 
   <% end %>
 
