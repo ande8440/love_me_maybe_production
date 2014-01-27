@@ -11,9 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery.maskedinput
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+
