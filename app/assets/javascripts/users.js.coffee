@@ -16,5 +16,12 @@ jQuery ->
     event.preventDefault()
     event.stopImmediatePropagation()
 
-#$("#phone_new").mask("(999) 999-9999");
+jQuery ->
+  $("#phone_new").mask("(999) 999-9999")
+
+jQuery ->
+  $("#phone_new_date").mask("(999) 999-9999")
+  
+jQuery ->
+  $("#phone_new_date_edit").mask("(999) 999-9999")
 

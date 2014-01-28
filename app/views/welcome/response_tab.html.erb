@@ -4,16 +4,27 @@
 			<%= render 'layouts/header' %>
 
 			<div style="background: url(<%= asset_path 'background.png' %>) repeat; margin-top: 50px; margin-left: auto; margin-right: auto; width: 90%; border-radius: 5px; /*box-shadow: 0 0 1px 1px;*/">
-				<div style="width: 30%;height: 60px; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; display: inline; float:left; padding: 20px; text-align: center;"><%= link_to 'Requests', root_path, class: "request-link" %></div>
-				<div style="width: 30%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; text-align: center;background: #fff;border-radius: 5px 5px 0px 0px;color: #2ba6cb;font-weight: 700;">Responses (<%= @response_count %>)</div>
+				<div style="width: 40%;height: 60px; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; display: inline; float:left; padding: 20px; text-align: center;"><%= link_to 'Requests', root_path, class: "request-link" %></div>
+				<div style="width: 40%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; padding-left: 5px;text-align: center;background: #FFFCDD; border: solid 2px #888; border-bottom:none; border-radius: 5px 5px 0px 0px;color: #2ba6cb;font-weight: 700;"><span style="background: url(<%= asset_path 'mini-heart.png' %>) no-repeat; padding:0px 0 5px 30px;">Responses (<%= @response_count %>)</span></div>
 
-				<div style="width: 100%; background: #fff; border-radius: 5px 5px 5px 5px; margin-top:0px; padding: 30px 10px 30px 30px;">
-					<%= image_tag('link-link.png', style: "float: left;") %>
+				<div style="width: 100%; background: #fff; border-radius: 5px 5px 5px 5px; margin-top:0px; padding: 50px 30px 30px 30px; border: solid 2px #888;">
+				<div class="small-12" style="
+    display: inline-block;
+    border: dashed 3px;
+    border-radius: 5px;
+    padding: 15px 15px 5px 15px;
+    margin: 0 auto;">	<%= image_tag('link-link.png', style: "float: left;") %>
 				<h5 style="display:inline; float: left;"> <a href=<%= root_url+@user.url_slug%>><%= root_url+@user.url_slug%></a> </h5>
 					<%= image_tag('small-arrow.png', style: "float: left; margin-left: 10px;") %>
-					<p style="margin-left: 10px; float: left; font-style: italic; font-weight: 900;">Post to your dating &amp; social media profiles or send to date</p>
+					<p style="margin-left: 10px; float: left; font-style: italic; font-weight: 900;">Post to your dating &amp; social media profiles or send to date</p></div>
 					<div style="clear: both;"></div>
-					<h4 style="margin-top: 20px; color: #444; font-size: 19px;">Matches</h4>
+					<h4 style="margin-top: 50px; color: #444; font-size: 19px;">Matches</h4>
+					<% if @matches.empty?  %>
+
+						<h6 style="font-weight:300;">You currently have no matches. <%= link_to 'Create a new date request', root_path %> or share your profile link to find out if your date was into you! </h6>
+
+					<% else %>
+
 
 				<table style="border: none; width: 100%;">
   <thead>
@@ -41,6 +52,8 @@
     <% end %>
   </tbody>
 </table>
+
+<% end %>
 
 					<div style="clear: both;"></div>
 				

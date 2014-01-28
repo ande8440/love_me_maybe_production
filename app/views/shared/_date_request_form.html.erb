@@ -1,4 +1,20 @@
+<script>
+(function() {
 
+  jQuery(function() {
+    return $("#phone_new").mask("(999) 999-9999");
+  });
+
+  jQuery(function() {
+    return $("#phone_new_date").mask("(999) 999-9999");
+  });
+
+  jQuery(function() {
+    return $("#phone_new_date_edit").mask("(999) 999-9999");
+  });
+
+}).call(this);
+</script>	
 
 
 <%= form_for(@date_request) do |f| %>
@@ -34,7 +50,7 @@
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
     <%= f.label :date_phone %><br>
-    <%= f.text_field :date_phone, {id: "phone_new2"} %>
+    <%= f.text_field :date_phone, {id: "phone_new_date"} %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
     <%= f.label :date_username %><br>
