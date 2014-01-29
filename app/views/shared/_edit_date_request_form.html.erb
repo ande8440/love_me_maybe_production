@@ -1,9 +1,9 @@
-<%= form_for(@date_request) do |f| %>
+<%= form_for(@date_request, remote: true) do |f| %>
   <% if @date_request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@date_request.errors.count, "error") %> prohibited this date_request from being saved:</h2>
+    <div id="error_explanation" style="background: #F5A0A0;border: 1px solid;margin-bottom: 25px;padding: 10px; text-align: left;">
+      <h5 style="margin-bottom: 0px;"><%= pluralize(@date_request.errors.count, "error") %> prohibited you from editing date:</h5>
 
-      <ul>
+      <ul style="padding: 0 0 0 30px;margin-bottom: 5px;">
       <% @date_request.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
@@ -64,7 +64,7 @@
     <%= f.text_area :date_comment %>
   </div>
   <div class="actions large-12" style="margin: 0 auto 0 auto; text-align:center;">
-	  <%= f.submit "Update Date", class: "button tiny", style: "display:inline; margin-right: 15px;" %>
+	  <%= f.submit "Update Date", remote: :true, class: "button tiny", style: "display:inline; margin-right: 15px;" %>
 	  <%= link_to 'Forget it', root_path, class: "button tiny", style: "display:inline;" %>
   </div>
   

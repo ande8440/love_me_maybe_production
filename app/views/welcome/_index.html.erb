@@ -1,5 +1,5 @@
 
-<div id="request_area">
+<div>
 <table style="border: none; width: 100%;">
   <thead>
 <tr style="background: #fff; font-size: 17px; text-decoration: underline;">
@@ -9,7 +9,6 @@
       <th>Dating Username</th>
       <th>Dating Site</th>
       <th>Rating</th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -23,8 +22,7 @@
         <td><%= date_request.date_username %></td>
         <td><%= date_request.date_username_site %></td>
         <td><%= date_request.date_rating %></td>
-        <td><%= link_to 'Edit', edit_date_request_path(date_request), remote: :true,  id: "home-edit-date-button" %></td>
-        <td><%= link_to 'Destroy', date_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', date_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

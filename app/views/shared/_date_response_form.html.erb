@@ -1,10 +1,20 @@
-<%= form_for(@date_response) do |f| %>
-  <% if @date_response.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@date_response.errors.count, "error") %> prohibited this date_request from being saved:</h2>
+<script>
+(function() {
 
-      <ul>
-      <% @date_response.errors.full_messages.each do |msg| %>
+  jQuery(function() {
+    return $("#phone_new_response").mask("(999) 999-9999");
+  });
+
+}).call(this);
+</script>
+
+<%= form_for @date_response, remote: true do |f| %>
+  <% if @date_response.errors.any? %>
+    <div id="error_explanation" style="background: #F5A0A0;border: 1px solid;margin-bottom: 25px;padding: 10px; text-align: left;">
+      <h5 style="margin-bottom: 0px;"><%= pluralize(@date_response.errors.count, "error") %> prohibited you from submitting response:</h5>
+
+      <ul style="padding: 0 0 0 30px;margin-bottom: 5px;">
+      <% @date_response.errors.each do |attr, msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -19,29 +29,33 @@
 	  #date-rating-no label:hover {color:red;opacity:1;}
   </style>
 
-  <% if current_user.nil? %>
+  <% if current_user.nil? || current_user == @user  %>
 
-  <div class="large-12" style="margin-top:60px;">
+	  <div style="display: inline-block;">
+	<p style="font-size: 18px;"><strong>Note:</strong> any information provided remains secure and strictly confidential, and it will only be used to match you with individuals you have dated.</p>
+  </div>
+
+  <div class="large-12" style="margin-top:20px;">
 	  <div class="large-12" style="margin: 0 auto 0 auto; text-align:center;">		  
 
   <div class="large-2 field" style="display: inline-block;text-align:left;">
-    <%= f.label :date_response_first_name %><br>
+    <%= f.label :date_response_first_name, "First Name" %><br>
     <%= f.text_field :date_response_first_name %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
-    <%= f.label :date_response_last_name %><br>
+    <%= f.label :date_response_last_name, "Last Name" %><br>
     <%= f.text_field :date_response_last_name %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
-    <%= f.label :date_response_phone %><br>
-    <%= f.number_field :date_response_phone %>
+    <%= f.label :date_response_phone, "Phone*" %><br>
+    <%= f.text_field :date_response_phone, {id: "phone_new_response"} %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
-    <%= f.label :date_response_username %><br>
+    <%= f.label :date_response_username, "Online Username" %><br>
     <%= f.text_field :date_response_username %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
-    <%= f.label :date_response_site %><br>
+    <%= f.label :date_response_site, "Dating Site" %><br>
     <%= f.select( :date_response_site, [['OkCupid','OkCupid'],['Tinder','Tinder'],['eHarmony','eHarmony'],['Match.com','Match.com'],['PlentyofFish','PlentyofFish'],['Zoosk','Zoosk'],['Christian Mingle','Christian Mingle'],['DateHookup','DateHookup'],['HowAboutWe','HowAboutWe'],['Coffee Meets Bagel','Coffee Meets Bagel'],['BlackPeopleMeet','BlackPeopleMeet'],['JDate','JDate'],['Badoo','Badoo'],['Meetme','Meetme'],['Skout','Skout'],['SeniorPeopleMeet','SeniorPeopleMeet']], { :prompt => 'Select'}, style: "height: 32px;") %>
   </div>
   </div>
@@ -63,7 +77,10 @@
   </div>
   </div>
   <div class="field" style="text-align:center;">
-	  <h5 style="margin-top:20px; margin-bottom:0px;">Comment</h5><br>
+	  <h5 style="margin-top:20px; margin-bottom:0px;">Comment*</h5>
+	  <h6>(Anonymous unless you want the same thing)</h6>
+	  <br>
+	  
     <%= f.text_area :date_response_comment %>
   </div>
   
@@ -101,7 +118,9 @@
   </div>
   </div>
   <div class="field" style="text-align:center;">
-	  <h5 style="margin-top:20px; margin-bottom:0px;">Comment</h5><br>
+	  <h5 style="margin-top:20px; margin-bottom:0px;">Comment*</h5>
+	  <h6>(Anonymous unless you want the same thing)</h6>
+	  <br>
     <%= f.text_area :date_response_comment %>
   </div>
   
@@ -110,7 +129,11 @@
   <% end %>
 
   <div class="actions large-12" style="margin: 0 auto 0 auto; text-align:center;">
-	  <%= f.submit "Submit", remote: :true, class: "button tiny", style: "display:inline; margin-right: 15px;" %>
+	  <% if current_user == @user %>
+		  <h5>You can't date yourself! Well, at least we don't want to encourage it...<%= link_to 'Return to Dashboard', root_path %></h5>
+	  <% else %>
+		  <%= f.submit "Submit", remote: :true, class: "button tiny", style: "display:inline;" %>
+	  <% end %>
 	  
   </div>
 

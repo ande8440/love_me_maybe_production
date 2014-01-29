@@ -44,41 +44,21 @@
 
 	<div style="clear: both;"></div>
 
+	<% if @user == current_user %>
 
-	<div id="response-area" class="large-11" style="margin: 0 auto; text-align: center; margin-top: 45px; padding-bottom:125px;">
-		<% if ! @date_response.nil? %>
-			<% if ! @date_request.nil? %>
-				<% if @date_request.date_rating == @date_response.date_response_rating %>
-					<% if @date_request.date_rating != 'No' %>
-						<h3 style="margin-bottom: 40px;">You and <%=@user.user_handle%> both want to <%= @date_request.date_rating == 'Yes' ? 'go on another date!' : 'be friends!' %></h3>
-						<h5 style="font-weight: 300;">What <%= @user.user_handle %> said about you:</h5>
-						<h5 style="color: #2795b6; font-style: italic;margin-bottom: 40px;"><%= @date_request.date_comment %></h5>
-						<h3 style="margin-bottom: 40px;"><%= @date_request.date_rating == 'Yes' ? 'Yes saying' : 'Friend saying' %></h3>
-						<div class="large-10" style="margin: 65px auto 0 auto;"><span style=" margin: 0 auto 10px auto;display: block;">Want to see how it went with other dates? </span><%=link_to current_user.nil? ? "Sign up!" : "Add Dates +", current_user.nil? ? signup_path : root_path, class: "button small", style: "margin-bottom: 15px;" %></div>
+		<div class="large-11" style="margin: 0 auto; text-align: center; margin-top: 45px; /* border-bottom: dashed 2px #222; */ background: #28b779;padding: 15px;border-radius: 4px;font-color: #ffffff;">
 
-					<% else %>
-						<h3 style="margin-bottom: 40px;">Looks like you and <%=@user.user_handle%> both just want to move on.</h3><h5 style="font-weight:normal;"> Don't worry, your message will remain anonymous and will only be visible if <%=@user.user_handle%> has at least 5 anonymous messages. </h5>
-						<div class="large-10" style="margin: 65px auto 0 auto;"><span style=" margin: 0 auto 10px auto;display: block;">Want to see how it went with other dates? </span><%=link_to current_user.nil? ? "Sign up!" : "Add Dates +", current_user.nil? ? signup_path : root_path, class: "button small", style: "margin-bottom: 15px;" %></div>
-					<% end %>
-				<% else %>
-					<h3 style="margin-bottom: 40px;">Awww, we're sorry. You and <%=@user.user_handle%> don't want the same thing.</h3><h5 style="font-weight:normal;">Don't worry, your message will remain anonymous and will only be visible if <%=@user.user_handle%> has at least 5 anonymous messages. </h5>
-					<div class="large-10" style="margin: 65px auto 0 auto;"><span style=" margin: 0 auto 10px auto;display: block;">Want to see how it went with other dates? </span><%=link_to current_user.nil? ? "Sign up!" : "Add Dates +", current_user.nil? ? signup_path : root_path, class: "button small", style: "margin-bottom: 15px;" %></div>
+					<h5 style="font-weight:normal;color: #fff;">This is your public profile where previous dates will be able to tell you what they thought. Share your profile with them or post it to your other online profiles.</h5>
+					<h4 style="display:inline"> <a style="color: #ffb848;font-weight: bolder;font-size: 25px;" href=<%= root_url+@user.url_slug%>><%= root_url+@user.url_slug%></a></h4>
+				</div>
+
 				<% end %>
-			<% else %>
-				<h3 style="margin-bottom: 40px;">Oops! Looks like <%=@user.user_handle%> hasn't added you as one of his past dates.</h3>
-				<div class="large-10" style="margin: 65px auto 0 auto;"><span style=" margin: 0 auto 10px auto;display: block;">Want to see what <%=@user.user_handle%> thought of your date or see how it went with your other dates? </span><%=link_to "Sign up!", signup_path, class: "button small", style: "margin-bottom: 15px;" %></div>
-				<% end %>
-			<% else %>
 
-		<h3 style="margin-bottom: 40px;">Find out if <%=@user.user_handle%> wants to go out again or be friends.</h3>
-		<h5 style="font-weight:normal;">Have you been on a date with <%=@user.user_handle%>?</h5>
-			<%= link_to 'YES', new_date_response_path(user_id: @user.id), remote: :true, class: "button success tiny", style: "margin: 3px;width: 60px;" %>
-			<a href=<%=root_path%> class="button alert tiny" style="margin: 3px; width: 60px;">NO</a>	
-			<h5 style="font-weight:normal;margin-top: 25px;">Don't worry! If you didn't like <%=@user.user_handle%>, or if you want different things, then your response will be aggregated with others to remain anonymous</h5>
 
-			<div class="large-5" style="margin: 65px auto 0 auto;"><span style="float: left; margin-bottom:10px;">Want to know about your other dates? </span><%=link_to "Sign up!", signup_path, style: "float: left; margin-bottom: 15px; margin-left:5px; display:inline;" %>
-			</div>
-				<% end %>
+
+				<div id="response-area" class="large-11" style="margin: 0 auto; text-align: center; margin-top: 45px; padding-bottom:125px;">
+					<%= render 'response_area' %>
+	
 	</div>
 
 

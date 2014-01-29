@@ -17,12 +17,12 @@
 </script>	
 
 
-<%= form_for(@date_request) do |f| %>
+<%= form_for(@date_request, remote: true) do |f| %>
   <% if @date_request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@date_request.errors.count, "error") %> prohibited this date_request from being saved:</h2>
+    <div id="error_explanation" style="background: #F5A0A0;border: 1px solid;margin-bottom: 25px;padding: 10px; text-align: left;">
+      <h5 style="margin-bottom: 0px;"><%= pluralize(@date_request.errors.count, "error") %> prohibited you from submitting date:</h5>
 
-      <ul>
+      <ul style="padding: 0 0 0 30px;margin-bottom: 5px;">
       <% @date_request.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
@@ -37,7 +37,7 @@
 	  #date-rating-no label {font-weight:700;color:#999999; opacity:.4;}
 	  #date-rating-no label:hover {color:red;opacity:1;}
 	  </style>
-  <div class="large-12" style="margin-top:60px;">
+  <div class="large-12" style="margin-top:20px;">
   <div class="large-12" style="margin: 0 auto 0 auto; text-align:center;">
 
   <div class="large-2 field" style="display: inline-block;text-align:left;">

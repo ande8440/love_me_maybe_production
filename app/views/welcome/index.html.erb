@@ -38,10 +38,11 @@
 					<p style="margin-left: 10px; float: left; font-style: italic; font-weight: 900;">Post to your dating &amp; social media profiles or send to date</p></div>
 					<div style="clear: both;"></div>
 					<h4 style="margin-top: 60px; color: #444; font-size: 19px;"></h4>
-					
-					<%= render 'index' %>
-					<%= link_to 'Add Date +', new_date_request_path, remote: :true, class: "button medium", id: "home-add-date-button" %>
 					<div id="date_request_area"></div>
+					
+					<div id="request_area"><%= render 'index' %></div>
+					<%= link_to 'Add Date +', new_date_request_path, remote: :true, class: "button medium", id: "home-add-date-button" %>
+					
 					
 				</div>
 
@@ -86,7 +87,7 @@
 
     <div>
   <div style="margin: 25px 1% 0 5%; display:inline-block; float:left;" class="fb-like" data-href='http://lovememaybe.co' data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-<div style="margin: 25px 15% 0 1%; display:inline-block;float:left;"><a style="display:inline-block; float:left;" href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url=<%= root_url %> data-text="Find out how your date went with LoveMeMaybe" data-hashtags="SecondChances,FriendZone">Tweet</a></div>
+<div style="margin: 25px 15% 0 5.5%; display:inline-block;float:left;"><a style="display:inline-block; float:left;" href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url=<%= root_url %> data-text="Find out how your date went with LoveMeMaybe" data-hashtags="SecondChances,FriendZone">Tweet</a></div>
   </div>
   
   

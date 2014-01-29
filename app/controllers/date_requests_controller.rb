@@ -1,5 +1,11 @@
 class DateRequestsController < ApplicationController
   before_action :set_date_request, only: [:show, :edit, :update, :destroy]
+  before_filter :load
+
+  def load
+    @date_requests = DateRequest.all
+  end
+
 
   # GET /date_requests
   # GET /date_requests.json
@@ -29,13 +35,18 @@ class DateRequestsController < ApplicationController
   # POST /date_requests
   # POST /date_requests.json
   def create
+	@user = current_user  
     @date_request = current_user.date_requests.new(date_request_params)
 
     respond_to do |format|
       if @date_request.save
-        format.html { redirect_to root_url, notice: 'Date request was successfully created.' }
+
+	format.js { render action: 'create_success' }
+      
+	format.html { redirect_to root_url }
         format.json { render action: 'show', status: :created, location: @date_request }
       else
+	format.js { }
         format.html { render action: 'new' }
         format.json { render json: @date_request.errors, status: :unprocessable_entity }
       end
@@ -50,6 +61,7 @@ class DateRequestsController < ApplicationController
         format.html { redirect_to root_path, notice: 'Date request was successfully updated.' }
         format.json { head :no_content }
       else
+	format.js { }
         format.html { render action: 'edit' }
         format.json { render json: @date_request.errors, status: :unprocessable_entity }
       end

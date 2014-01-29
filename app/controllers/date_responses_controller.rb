@@ -30,6 +30,8 @@ class DateResponsesController < ApplicationController
   # POST /date_responses
   # POST /date_responses.json
   def create
+
+
     
     @date_response = DateResponse.new(date_response_params)
     @user = User.find(params[:date_response][:date_requester_id])
@@ -44,10 +46,15 @@ class DateResponsesController < ApplicationController
 		      session[:request] = @date_response.date_request_id
 		      session[:your_response] = @date_response.id
 	      end
+
+	      @date_request = DateRequest.find(session[:request]) if session[:request] != nil
+	  @date_response = DateResponse.find(session[:your_response]) if session[:your_response] != nil
+	format.js { render action: 'create_success' }
         format.html { redirect_to :back, notice: 'Date response was successfully created.' }
         format.json { render action: 'show', status: :created, location: @date_response }
       else
-        format.html { render action: 'new' }
+	format.js { }
+        format.html { render 'new' }
         format.json { render json: @date_response.errors, status: :unprocessable_entity }
       end
     end
@@ -85,6 +92,6 @@ class DateResponsesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def date_response_params
-      params.require(:date_response).permit(:date_request_id, :date_response_first_name, :date_response_last_name, :date_response_phone, :date_response_username, :date_response_site, :date_response_comment, :date_response_rating, :date_requester_id, :date_responder_id)
+      params.require(:date_response).permit(:date_request_id, :date_response_first_name, :date_response_last_name, :date_response_phone, :date_response_username, :date_response_site, :uniq_phone_identifier, :date_response_comment, :date_response_rating, :date_requester_id, :date_responder_id)
     end
 end
