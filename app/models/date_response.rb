@@ -1,12 +1,14 @@
 class DateResponse < ActiveRecord::Base
 	belongs_to :date_request
 
-	before_save :set_date_request_id
-	before_save :set_uniq_phone_identifier
+	before_validation :set_date_request_id
+	before_validation :set_uniq_phone_identifier
 
 		validates :date_response_phone, presence: { message: "You must enter a phone number. It will remain secure and confidential" }, length: { minimum: 14, maximum: 14, message: "Phone number must be valid (999) 999-9999 format" }
 		validates :date_response_rating, presence: { message: "You have to say how the date went!" }
 		validates :date_response_comment, presence: { message: "Please leave an additional comment. Remember, it's anonymous!" }
+		validates_uniqueness_of :uniq_phone_identifier, allow_nil: true, allow_blank: true, message: "We're sorry, but it looks like someone matching your information already got a response from this profile."
+		
 
 	def set_uniq_phone_identifier
 		if ! self.date_request_id.nil?
@@ -14,18 +16,7 @@ class DateResponse < ActiveRecord::Base
 		end
 	end
 
-	def phone_already_matched
-		if self.uniq_phone_identifier.nil?
-			return true
-		else
-			uniqs = DateResponse.where("uniq_phone_identifier = ?", self.uniq_phone_identifier)
-			if uniqs.count > 1
-				return false
-			else
-				return true
-			end
-		end
-	end
+	
 		
 	def set_date_request_id
 		request_user = User.find(self.date_requester_id)

@@ -8,15 +8,13 @@
 				<div style="width: 40%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; padding-left: 5px;text-align: center;background: #FFFCDD; border: solid 2px #888; border-bottom:none; border-radius: 5px 5px 0px 0px;color: #2ba6cb;font-weight: 700;"><span style="background: url(<%= asset_path 'mini-heart.png' %>) no-repeat; padding:0px 0 5px 30px;">Responses (<%= @response_count %>)</span></div>
 
 				<div style="width: 100%; background: #fff; border-radius: 5px 5px 5px 5px; margin-top:0px; padding: 50px 30px 30px 30px; border: solid 2px #888;">
-				<div class="small-12" style="
-    display: inline-block;
-    border: dashed 3px;
-    border-radius: 5px;
-    padding: 15px 15px 5px 15px;
-    margin: 0 auto;">	<%= image_tag('link-link.png', style: "float: left;") %>
-				<h5 style="display:inline; float: left;"> <a href=<%= root_url+@user.url_slug%>><%= root_url+@user.url_slug%></a> </h5>
+					<div class="small-12" style="display: inline-block;border-radius: 5px;padding: 15px 15px 0px 20px;margin: 0 auto; background: #28b779;text-align: center;">
+						<div style="display: inline;margin: 0 auto;/* float: left; */">
+							<%= image_tag('link-link.png', style: "float: left;") %>
+						</div>
+				<h5 style="display:inline; float: left;margin-top:5px;"> <a style="color: #ffb848" href=<%= root_url+@user.url_slug%>><%= root_url+@user.url_slug%></a> </h5>
 					<%= image_tag('small-arrow.png', style: "float: left; margin-left: 10px;") %>
-					<p style="margin-left: 10px; float: left; font-style: italic; font-weight: 900;">Post to your dating &amp; social media profiles or send to date</p></div>
+					<p style="margin-left: 10px; float: left; font-style: italic; font-weight: 900; color:#fff; font-size:18px;">Post to your dating &amp; social media profiles or send to date</p></div>
 					<div style="clear: both;"></div>
 					<h4 style="margin-top: 50px; color: #444; font-size: 19px;">Matches</h4>
 					<% if @matches.empty?  %>

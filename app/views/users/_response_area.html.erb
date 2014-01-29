@@ -18,7 +18,7 @@
 					<div class="large-10" style="margin: 65px auto 0 auto;"><span style=" margin: 0 auto 10px auto;display: block;">Want to see how it went with other dates? </span><%=link_to current_user.nil? ? "Sign up!" : "Add Dates +", current_user.nil? ? signup_path : root_path, class: "button small", style: "margin-bottom: 15px;" %></div>
 				<% end %>
 			<% else %>
-				<h3 style="margin-bottom: 40px;">Oops! Looks like <%=@user.user_handle%> hasn't added you as one of his past dates.</h3>
+				<h3 style="margin-bottom: 40px;">Oops! Looks like <%=@user.user_handle%> hasn't added you as a past date.</h3>
 				<div class="large-10" style="margin: 65px auto 0 auto;"><span style=" margin: 0 auto 10px auto;display: block;">Want to see what <%=@user.user_handle%> thought of your date or see how it went with your other dates? </span><%=link_to "Sign up!", signup_path, class: "button small", style: "margin-bottom: 15px;" %></div>
 				<% end %>
 			<% else %>
