@@ -1,0 +1,15 @@
+Hi <%= @user.first_name %>,
+
+Welcome to LoveMeMaybe!
+
+Go start finding those missed friendships and loves by clicking the below link:
+
+<%= edit_email_confirm_url(@user.email_confirm_token) %>
+
+Good luck!
+LoveMeMaybe
+
+
+
+Note: If you did not sign up for LoveMeMaybe, please let us know at support@lovememaybe.co
+

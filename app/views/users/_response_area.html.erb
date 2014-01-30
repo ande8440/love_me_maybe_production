@@ -29,8 +29,8 @@
 
 				<h3 style="margin-bottom: 40px;">Find out if <%=@user.user_handle%> wants to go out again or be friends.</h3>
 				<h5 style="font-weight:normal;">Have you been on a date with <%=@user.user_handle%>?</h5>
-				<%= link_to 'YES', new_date_response_path(user_id: @user.id), remote: :true, class: "button success tiny", style: "margin: 3px;width: 60px;" %>
-				<a href=<%=root_path%> class="button alert tiny" style="margin: 3px; width: 60px;">NO</a>	
+				<%= link_to 'YES', new_date_response_path(user_id: @user.id), remote: :true, class: "button success tiny", style: "margin: 3px;width: 70px;height: 32px;border-radius: 4px;padding: 7px;font-size: 14px;" %>
+				<a href=<%=root_path%> class="button alert tiny" style="margin: 3px;width: 70px;height: 32px;border-radius: 4px;padding: 7px;font-size: 14px;">NO</a>	
 				<h5 style="font-weight:normal;margin-top: 25px;">Don't worry! If you didn't like <%=@user.user_handle%>, or if you want different things, then your response will be aggregated with others to remain anonymous</h5>
 
 				<div class="large-5" style="margin: 65px auto 0 auto;"><span style="float: left; margin-bottom:10px;">Want to know about your other dates? </span><%=link_to "Sign up!", signup_path, style: "float: left; margin-bottom: 15px; margin-left:5px; display:inline;" %>

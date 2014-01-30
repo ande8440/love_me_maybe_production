@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       if @user.save
 	      @user.user_dating_usernames.each {|name| name.destroy unless name.dating_site_username.length > 0 }
 	      sign_in @user
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Welcome to LoveMeMaybe!' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -81,6 +81,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :user_phone, :user_handle, :image, :admin, :password_digest, :password_reset_token, :password_reset_sent_at, :remember_token, :password, :password_confirmation, user_dating_usernames_attributes: [:dating_site_username, :dating_site_website])
+      params.require(:user).permit(:first_name, :last_name, :email, :user_phone, :user_handle, :image, :admin, :password_digest, :password_reset_token, :password_reset_sent_at, :remember_token, :email_confirm_token, :email_confirm_sent_at, :email_confirmed, :password, :password_confirmation, user_dating_usernames_attributes: [:dating_site_username, :dating_site_website])
     end
 end

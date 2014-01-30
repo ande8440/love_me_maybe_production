@@ -1,0 +1,15 @@
+<h1>Hi <%= @user.first_name %>,</h1>
+
+<p>Welcome to LoveMeMaybe!</p>
+
+<p>Go start finding those missed friendships and loves by clicking the below link:</p>
+
+<div style="background: #999"><%= edit_email_confirm_url(@user.email_confirm_token) %></div>
+
+<p>Good luck!</p>
+<p>LoveMeMaybe</p>
+
+
+
+<p style="font-size: 10px; margin-top:50px;">Note: If you did not sign up for LoveMeMaybe, please let us know at support@lovememaybe.co</p>
+

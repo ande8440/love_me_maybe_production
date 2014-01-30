@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 
 	before_validation :generate_slug
 
+	after_create :send_email_confirm
+
 	
 	def to_param
 		url_slug
@@ -67,6 +69,13 @@ class User < ActiveRecord::Base
 		 self.password_reset_sent_at = Time.zone.now
 		 save!
 		 UserMailer.password_reset(self).deliver
+	 end
+
+	 def send_email_confirm
+		 generate_token(:email_confirm_token)
+		 self.email_confirm_sent_at = Time.zone.now
+		 save!
+		 UserMailer.email_confirm(self).deliver
 	 end
 
 	def generate_token(column)

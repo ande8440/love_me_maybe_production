@@ -26,6 +26,8 @@ LoveMaybe::Application.routes.draw do
 
   resources :password_resets
 
+  resources :email_confirms
+
  # get 'signout', to: 'sessions#destroy', as: 'signout' 
 
  # post 'signout', to: 'sessions#destroy', as: 'signout' 

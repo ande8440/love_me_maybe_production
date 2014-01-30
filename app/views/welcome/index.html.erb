@@ -27,6 +27,11 @@
 				<div style="width: 40%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; text-align: center;"><%= link_to("Responses (#{@response_count})", {controller: :welcome, action: :response_tab}, {class: "response-link"}) %></div>
 
 				<div style="width: 100%; background: #fff; border-radius: 0px 5px 5px 5px; margin-top:0px; padding: 50px 30px 30px 30px; border: solid 2px #888;">
+
+					  <% flash.each do |key, value| %>
+	  <div class="large-8 alert alert-<%= key %>" style="background: #FFE48E;border: 1px solid;margin: 0 auto 25px auto;padding: 10px; text-align:center;"><%= value %></div>
+  <% end %>
+
 <div class="small-12" style="display: inline-block;border-radius: 5px;padding: 15px 15px 0px 20px;margin: 0 auto; background: #28b779;text-align: center;">
 						<div style="display: inline;margin: 0 auto;/* float: left; */">
 							<%= image_tag('link-link.png', style: "float: left;") %>
