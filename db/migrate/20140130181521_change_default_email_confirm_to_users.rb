@@ -1,5 +1,5 @@
 class ChangeDefaultEmailConfirmToUsers < ActiveRecord::Migration
   def change
-	  change_column :users, :email_confirmed, :boolean, default: false
+	  add_column :users, :email_confirmed, :boolean, default: false
   end
 end
