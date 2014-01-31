@@ -32,19 +32,27 @@
 	  <div class="large-8 alert alert-<%= key %>" style="background: #FFE48E;border: 1px solid;margin: 0 auto 25px auto;padding: 10px; text-align:center;"><%= value %></div>
   <% end %>
 
-<div class="small-12" style="display: inline-block;border-radius: 5px;padding: 15px 15px 0px 20px;margin: 0 auto; background: #28b779;text-align: center;">
+  <div class="small-12" style="display: inline-block;border-radius: 5px;padding: 15px 15px 0px 20px;margin: 0 auto;text-align: center;">
+
+	  <p style="font-style: italic; font-weight: 900; color:#fff; font-size:20px;color: #2795b6; margin-bottom:10px;">Post the below link to your dating &amp; social media profiles or send to date:</p>
+
 						<div style="display: inline;margin: 0 auto;/* float: left; */">
-							<%= image_tag('link-link.png', style: "float: left;") %>
+							<%= image_tag('link-link.png') %>
 						</div>
-				<h5 style="display:inline; float: left;margin-top:5px;"> <a style="color: #ffb848" href=<%= root_url+@user.url_slug%>><%= root_url+@user.url_slug%></a> </h5>
-					<%= image_tag('small-arrow.png', style: "float: left; margin-left: 10px;") %>
-					<p style="margin-left: 10px; float: left; font-style: italic; font-weight: 900; color:#fff; font-size:18px;">Post to your dating &amp; social media profiles or send to date</p></div>
+						<h5 style="margin-top:5px;"> <a style="color: #ffb848" href=<%= root_url+@user.url_slug%>>lovememaybe/<%= @user.url_slug%></a> </h5>
+						<% if @user.date_requests.count <= 0 %>
+							<h5 style="margin:20px;"> AND </h5>
+							<%= link_to 'Add Date +', new_date_request_path, remote: :true, class: "button medium", id: "home-add-date-button" %>
+						<% end %>
+				</div>
 					<div style="clear: both;"></div>
 					<h4 style="margin-top: 60px; color: #444; font-size: 19px;"></h4>
 					<div id="date_request_area"></div>
 					
 					<div id="request_area"><%= render 'index' %></div>
-					<%= link_to 'Add Date +', new_date_request_path, remote: :true, class: "button medium", id: "home-add-date-button" %>
+					<% if  @user.date_requests.count > 0 %>
+						<%= link_to 'Add Date +', new_date_request_path, remote: :true, class: "button medium", id: "home-add-date-button" %>
+					<% end %>
 					
 					
 				</div>
