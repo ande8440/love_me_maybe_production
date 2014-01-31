@@ -20,6 +20,7 @@ class DateRequestsController < ApplicationController
 		  format.html
 		  format.js
 	  end
+
   end
 
   # GET /date_requests/1

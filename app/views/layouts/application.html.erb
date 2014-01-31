@@ -14,12 +14,18 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "LoveMeMaybe" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
 	<%= javascript_include_tag "vendor/custom.modernizr" %>
 	<%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
+	<%= favicon_link_tag "favicon.ico"%>
+	<%= csrf_meta_tags %>
+	<meta property="og:title" content="LoveMeMaybe" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://lovememaybe.co" />
+<meta property="og:site_name" content="LoveMeMaybe" />
+<meta property="og:description" content="Find out what your dates thought about you!" />
   </head>
 
   <body>
