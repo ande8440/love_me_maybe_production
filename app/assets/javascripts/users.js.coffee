@@ -16,6 +16,10 @@ jQuery ->
     event.preventDefault()
     event.stopImmediatePropagation()
 
+  $('#close-flash').on 'click', (event) ->
+    $(this).closest('.flash-message-div').hide()
+    event.preventDefault()
+
 jQuery ->
   $("#phone_new").mask("(999) 999-9999")
 

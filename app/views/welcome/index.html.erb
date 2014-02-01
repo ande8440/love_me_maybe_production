@@ -27,7 +27,7 @@
 				<div style="width: 100%; background: #fff; border-radius: 0px 5px 5px 5px; margin-top:0px; padding: 50px 30px 30px 30px; border: solid 2px #888;">
 
 					  <% flash.each do |key, value| %>
-	  <div class="large-8 alert alert-<%= key %>" style="background: #FFE48E;border: 1px solid;margin: 0 auto 25px auto;padding: 10px; text-align:center;"><%= value %></div>
+	  <div class="flash-message-div large-8 alert alert-<%= key %>" style="background: #FFE48E;border: 1px solid;margin: 0 auto 25px auto;padding: 10px; text-align:center;"><%= value %><a id="close-flash" href="#" style="float: right;">X</a></div>
   <% end %>
 
   <div class="small-12" style="display: inline-block;border-radius: 5px;padding: 15px 15px 0px 20px;margin: 0 auto;text-align: center;">
@@ -79,7 +79,7 @@
 		<div style:"clear:both;"></div>
 
    <% flash.each do |key, value| %>
-	  <div class="large-8 alert alert-<%= key %>" style="background: #FFE48E;border: 1px solid;margin: 0 auto 25px auto;padding: 10px; text-align:center;"><%= value %></div>
+	  <div class="flash-message-div large-8 alert alert-<%= key %>" style="background: #FFE48E;border: 1px solid;margin: 0 auto 25px auto;padding: 10px; text-align:center;"><%= value %><a id="close-flash" href="#" style="float: right;">X</a></div>
   <% end %>
 		</div>
 
