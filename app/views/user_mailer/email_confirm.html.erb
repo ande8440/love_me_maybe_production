@@ -1,15 +1,23 @@
-<h1>Hi <%= @user.first_name %>,</h1>
+<div style="padding: 30px 120px;width:100%!important; height:100%!important;background: url(<%=asset_url('background.png')%>);color: #555;">
+	
+	<div style="background:#fff; border-radius: 3px;border: solid 2px;border-color: gray; margin: 0 auto;">
 
-<p>Welcome to LoveMeMaybe!</p>
+		<div style="background: #fff; padding:10px 10px 0px 10px;">	<img src=<%=asset_url('master-logo.png') %>/></div>
+		<div style="background:#F5F5F5;padding:10px 10px 10px 10px;">
+		<h3>Hi <%= @user.first_name %>,</h3>
+
+<h4>Welcome to LoveMeMaybe!</h4>
 
 <p>Go start finding those missed friendships and loves by clicking the below link:</p>
 
-<div style="background: #999"><%= edit_email_confirm_url(@user.email_confirm_token) %></div>
+<a style="text-align: center;color: #fff;font-weight:bold;font-size:17px;text-decoration:none;" href="<%= edit_email_confirm_url(@user.email_confirm_token) %>"><div style="width:150px; padding:10px; margin: 20px 0%; background-color: #ffb848;">Confirm Email</div></a>
 
 <p>Good luck!</p>
 <p>LoveMeMaybe</p>
 
 
 
-<p style="font-size: 10px; margin-top:50px;">Note: If you did not sign up for LoveMeMaybe, please let us know at support@lovememaybe.co</p>
-
+<p style="font-size: 10px; margin-top:40px;">Note: If you did not sign up for LoveMeMaybe, please let us know at support@lovememaybe.co</p>
+</div>
+</div>
+</div>
