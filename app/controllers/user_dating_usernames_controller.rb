@@ -69,6 +69,6 @@ class UserDatingUsernamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_dating_username_params
-      params.require(:user_dating_username).permit(:dating_site_id, :user_id, :dating_site_username)
+      params.require(:user_dating_username).permit(:dating_site_id, :user_id, :dating_site_username, :dating_site_website, :uniq_username)
     end
 end

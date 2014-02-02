@@ -1,15 +1,14 @@
 <div class="fieldset">
 		<div class="large-5 field" style="display: inline-block; margin-right: 10px;">
-			  <%= f.label :dating_site_username, "Online Dating Username" %><br>
+			  <%= f.label :dating_site_username, "Online Dating Username" %>
 			  <%= f.text_field :dating_site_username %>
 		  </div>
 		  <div class="large-5 field" style="display: inline-block;">
-			  <%= f.label :dating_site_website, "Online Dating Site/App" %><br>
-			  <%= f.select( :dating_site_website, [['OkCupid','OkCupid'],['Tinder','Tinder'],['eHarmony','eHarmony'],['Match.com','Match.com'],['PlentyofFish','PlentyofFish'],['Zoosk','Zoosk'],['Christian Mingle','Christian Mingle'],['DateHookup','DateHookup'],['HowAboutWe','HowAboutWe'],['Coffee Meets Bagel','Coffee Meets Bagel'],['BlackPeopleMeet','BlackPeopleMeet'],['JDate','JDate'],['Badoo','Badoo'],['Meetme','Meetme'],['Skout','Skout'],['SeniorPeopleMeet','SeniorPeopleMeet']], { :prompt => 'Select'}, style: 'height:32px;') %>
+			  <%= f.label :dating_site_website, "Online Dating Site/App" %>
+			  <%= f.select( :dating_site_website, [['OkCupid','OkCupid'],['eHarmony','eHarmony'],['Match.com','Match.com'],['PlentyofFish','PlentyofFish'],['Christian Mingle','Christian Mingle'],['DateHookup','DateHookup'],['HowAboutWe','HowAboutWe'],['BlackPeopleMeet','BlackPeopleMeet'],['JDate','JDate'],['Skout','Skout'],['SeniorPeopleMeet','SeniorPeopleMeet']], { :prompt => 'Select'}, style: 'height:32px;') %>
 		  </div>
 		  <div class="field" style="width: 5%; display: inline-block;">
 		  <%= f.hidden_field :_destroy %>
 		  <%= link_to "remove", '#', class: "remove_fields" %>
 	 	 </div>
-		  
-	  </div>
+	 </div>

@@ -18,13 +18,20 @@
 
 		<div class="large-4" style="float:left;">
 
-		<h2 style="margin-bottom:2px;"><%= @user.user_handle %></h2>
+		<h2 style="margin-bottom:0px; font-size:34px;"><%= @user.user_handle %></h2>
 
 		<% if ! @user.profile_name_hidden? %>
 		<p style="margin-bottom: 2px;">
 		  <%= @user.first_name %> <%= @user.last_name %> 
 		  </p>
-	        <% end %>
+	  <% end %>
+
+	  <% if ! @user.hide_city_state? && @user.city && @user.state %>
+		<p style="margin-bottom: 2px;">
+		  <%= @user.city %>, <%= @user.state %>
+		  </p>
+	  <% end %>
+
 	  </div>
 
 	  <div class="large-9" style="float: left;">
