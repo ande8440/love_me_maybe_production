@@ -4,6 +4,8 @@ class DateResponse < ActiveRecord::Base
 	before_validation :set_date_request_id
 	before_validation :set_uniq_phone_identifier
 
+	after_create :send_match_notification
+
 		validates :date_response_phone, presence: { message: "You must enter a phone number. It will remain secure and confidential" }, length: { minimum: 14, maximum: 14, message: "Phone number must be valid (999) 999-9999 format" }
 		validates :date_response_rating, presence: { message: "You have to say how the date went!" }
 		validates :date_response_comment, presence: { message: "Please leave an additional comment. Remember, it's anonymous!" }
@@ -14,6 +16,9 @@ class DateResponse < ActiveRecord::Base
 	def set_uniq_phone_identifier
 		if ! self.date_request_id.nil?
 			self.uniq_phone_identifier = "#{self.date_request_id.to_s}-#{self.date_response_phone}"
+			dr= DateRequest.find(self.date_request_id)
+			dr.matched = true
+			dr.save!
 		end
 	end
 
@@ -31,7 +36,15 @@ class DateResponse < ActiveRecord::Base
 		end
 	end
 
-	
+	def send_match_notification
+		if ! self.date_request_id.nil?
+			matched_request = DateRequest.find(self.date_request_id)
+			matched_user = User.find(matched_request.user_id)
+			if matched_user.receive_notifications?
+				UserMailer.match_notification(matched_request, matched_user).deliver
+			end
+		end
+	 end
 		
 	def set_date_request_id
 		request_user = User.find(self.date_requester_id)

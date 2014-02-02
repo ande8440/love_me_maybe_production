@@ -1,0 +1,22 @@
+<div style="padding: 60px 120px;background: url('http://pacific-chamber-1958.herokuapp.com/assets/background.png');color: #555;">
+	
+	<div style="background:#fff; border-radius: 3px;border: solid 2px;border-color: gray; margin: 0 auto;">
+
+		<div style="background: #fff; padding:10px 10px 0px 10px;">	<img src='http://pacific-chamber-1958.herokuapp.com/assets/master-logo.png'/></div>
+		<div style="background:#F5F5F5;padding:10px 10px 10px 10px;">
+		<h3><%= @user.first_name %>,</h3>
+
+		<h4><%= @request.first_name %> responded about your date!</h4>
+
+<p>See if you both wanted the same thing:</p>
+
+<a style="text-align: center;color: #fff;font-weight:bold;font-size:17px;text-decoration:none;" href="<%= responses_url %>"><div style="width:150px; padding:10px; margin: 20px 0%; background-color: #ffb848;">View Response</div></a>
+
+<p>Good luck!</p>
+<p>LoveMeMaybe</p>
+
+
+
+</div>
+</div>
+</div>

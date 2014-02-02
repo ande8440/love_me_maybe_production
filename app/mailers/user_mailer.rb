@@ -16,5 +16,11 @@ class UserMailer < ActionMailer::Base
 		mail to: user.email, subject: "Welcome to LoveMeMaybe! Please Confirm Email."
 	end
 
+	def match_notification(matched_request, matched_user)
+		@user = matched_user
+		@request = matched_request
+		mail to: matched_user.email, subject: "One of your dates responded!"
+	end
+
   
 end

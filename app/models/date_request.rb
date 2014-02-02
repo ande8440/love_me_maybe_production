@@ -6,7 +6,7 @@ class DateRequest < ActiveRecord::Base
 	validates :date_rating, presence: {message: "What did you think of the date?!"}
 	validates :date_comment, presence: {message: "Comment can't be blank"}
 	validates :first_name, presence: {message: "Must provide first name"}
-	validate :check_for_phone_or_username
+	validate :check_for_phone_or_username, on: :create
 
 	def check_for_phone_or_username
 		if ! date_username.blank? || ! date_username_site.blank?

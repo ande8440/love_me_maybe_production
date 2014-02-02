@@ -30,6 +30,8 @@ class WelcomeController < ApplicationController
 		  end
 
 		  @anonymous_min_response = 3
+		else
+			redirect_to root_path
 		end
 	end
 
