@@ -1,6 +1,6 @@
 <div style="background: #fff; position: absolute; top: 0px; left: 0px; height: 90px; width: 100%;" ></div>
 <div class="large-12 columns" style="background: #fff; padding-top:15px;">
-	<%= link_to image_tag('master-logo.png'), root_path %>
+	<%= link_to image_tag('master-logo.png', style: "margin-right: 125px;"), root_path %>
 	<% if signed_in? %>
 		<%= link_to "Sign out", signout_path, method: "delete", style: "float: right; margin-right: 10px;" %><span style="float: right; margin-right: 10px;">|</span>
 		<%= link_to 'Account', edit_user_path(current_user), style: "float: right; margin-right: 10px;" %>
