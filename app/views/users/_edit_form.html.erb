@@ -39,6 +39,7 @@
     <%= f.label :last_name, "Last Name*" %><br>
     <%= f.text_field :last_name %>
   </div>
+ 
   <div style="clear:both;"></div>
   <div class="large-5 field" style="display: inline-block; margin-right: 10px;">
 	  <%= f.label :email, "Email*" %><br>
@@ -109,8 +110,14 @@ transition: box-shadow 0.45s, border-color 0.45s ease-in-out;"><%= name.dating_s
 	  
 
   <div style="clear:both;"></div>
+  <h4>Privacy Settings</h4>
+   <div class="large-6 field" style="display: inline-block; margin-bottom:10px;">
+	   <%= f.check_box :profile_name_hidden, style:"float:left; margin-right:5px;" %>
+	   <%= f.label :profile_name_hidden, "Hide Name on Public Profile?" %>
+    
+  </div>
 
-
+  <div style="clear:both;"></div>
   
   <div class="actions">
     <%= f.submit 'Update', class: "button" %>

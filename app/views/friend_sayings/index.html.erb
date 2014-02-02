@@ -1,0 +1,27 @@
+<h1>Listing friend_sayings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Saying</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @friend_sayings.each do |friend_saying| %>
+      <tr>
+        <td><%= friend_saying.saying %></td>
+        <td><%= link_to 'Show', friend_saying %></td>
+        <td><%= link_to 'Edit', edit_friend_saying_path(friend_saying) %></td>
+        <td><%= link_to 'Destroy', friend_saying, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Friend saying', new_friend_saying_path %>

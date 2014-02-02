@@ -1,5 +1,7 @@
 LoveMaybe::Application.routes.draw do
   
+  resources :friend_sayings
+
   resources :yes_sayings
 
   resources :date_responses

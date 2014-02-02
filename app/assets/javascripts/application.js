@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery.maskedinput
 //= require jquery_ujs
+//= require fancybox
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

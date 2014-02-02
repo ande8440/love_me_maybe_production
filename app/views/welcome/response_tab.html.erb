@@ -1,13 +1,30 @@
+<script>
+$(document).ready(function() {
+	$(".fancybox-link").fancybox({
+		maxWidth	: 800,
+		maxHeight	: 600,
+		fitToView	: true,
+		width		: '60%',
+		height		: '60%',
+		autoSize	: true,
+		closeClick	: false,
+		openEffect	: 'none',
+		closeEffect	: 'none'
+	});
+});
+	
+  </script>
+
 <style>.request-link { color: #ffffff; }
 	.request-link:hover { color: #ffffff; text-decoration: underline; }</style>
 
 			<%= render 'layouts/header' %>
 
 			<div style="background: url(<%= asset_path 'background.png' %>) repeat; margin-top: 50px; margin-left: auto; margin-right: auto; width: 90%; border-radius: 5px; /*box-shadow: 0 0 1px 1px;*/">
-				<div style="width: 40%;height: 60px; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; display: inline; float:left; padding: 20px; text-align: center;"><%= link_to 'Requests', root_path, class: "request-link" %></div>
-				<div style="width: 40%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; padding-left: 5px;text-align: center;background: #FFFCDD; border: solid 2px #888; border-bottom:none; border-radius: 5px 5px 0px 0px;color: #2ba6cb;font-weight: 700;"><span style="background: url(<%= asset_path 'mini-heart.png' %>) no-repeat; padding:0px 0 5px 30px;">Responses (<%= @response_count %>)</span></div>
+				<div style="width: 40%;height: 60px; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; display: inline; float:left; padding: 20px; text-align: center;"><%= link_to "Requests (#{@request_count})", root_path, class: "request-link" %></div>
+				<div style="width: 40%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; padding-left: 5px;text-align: center;background: #FFFCDD; box-shadow: 0 0 1px 1px; border-bottom:none; border-radius: 5px 5px 0px 0px;font-weight: 700;"><span style="background: url(<%= asset_path 'mini-heart.png' %>) no-repeat; padding:0px 0 5px 30px;">Responses (<%= @response_count %>)</span></div>
 
-				<div style="width: 100%; background: #fff; border-radius: 5px 5px 5px 5px; margin-top:0px; padding: 30px 30px 30px 30px; border: solid 2px #888;">
+				<div style="width: 100%; background: #fff; border-radius: 5px 5px 5px 5px; margin-top:0px; padding: 30px 30px 30px 30px; box-shadow: 0 0 1px 1px;">
 					<div class="small-12" style="display: inline-block;border-radius: 5px;padding: 15px 15px 0px 0px;margin: 0 auto;">
 					<div style="display: inline;margin: 0 auto;/* float: left; */">
 							<%= image_tag('link-link.png', style: "float: left;") %>
@@ -29,7 +46,7 @@
       <th>Phone</th>
       <th>Dating Username</th>
       <th>Dating Site</th>
-      <th>Rating</th>
+      <th style="text-align:center;">Rating</th>
       <th></th>
     </tr>
   </thead>
@@ -40,11 +57,25 @@
       <tr style="margin-right: 10px;" >
         <td style="margin-right: 10px;"><%= @date_request.first_name %></td>
         <td><%= @date_request.date_phone %></td>
-        <td><%= @date_request.date_username %></td>
-        <td><%= @date_request.date_username_site %></td>
-        <td><%= @date_request.date_rating %></td>
-        <td><%= link_to 'Edit', edit_date_request_path(@date_request), remote: :true,  id: "home-edit-date-button" %></td>
-      </tr>
+        <td><%= @date_request.date_username.blank? ? "N/A" : @date_request.date_username %></td>
+        <td><%= @date_request.date_username_site.blank? ? "N/A" : @date_request.date_username_site  %></td>
+	<% if @date_request.date_rating == "Yes" %>
+			<td style="text-align:center;"><%= image_tag 'thumbup.png' %> </td>
+		<% else %>
+			<% if @date_request.date_rating == "Friends" %>
+		    		<td style="text-align:center;"><%= image_tag 'friendicon.png' %></td>
+			<% else %>
+				<td style="text-align:center;"><%= image_tag 'thumbdown.png' %></td>
+			<% end %>
+		<% end %>
+		<td><%= link_to "View", "#inline#{match.id}", remote: :true, class: "fancybox-link" %></td>
+		<div id="inline<%= match.id%>" class="large-11" style="margin: 0 auto; text-align: center; margin-top: 45px; padding-bottom:125px; display:none;">
+			<h3 style="margin-bottom: 40px;">You and <%=@date_request.first_name%> both want to <%= @date_request.date_rating == 'Yes' ? 'go on another date!' : 'be friends!' %></h3>
+			<h5 style="font-weight: 300;">What <%= @date_request.first_name %> said about you:</h5>
+			<h5 style="color: #2795b6; font-style: italic;margin-bottom: 40px;"><%= match.date_response_comment %></h5>
+			<h3 style="margin-bottom: 40px;"><%= @date_request.date_rating == 'Yes' ? YesSaying.first(offset: rand(YesSaying.count)).saying : FriendSaying.first(offset: rand(FriendSaying.count)).saying %></h3>
+		</div>
+</tr>
     <% end %>
   </tbody>
 </table>
@@ -58,7 +89,7 @@
 						<h6 style="font-weight:300;">Responses from dates who are not matches are anonymous. You need <span style="font-weight: 700; text-decoration: underline;"><%= @anonymous_min_response - @anonymous_responses.count %></span> more <%= @anonymous_min_response - @anonymous_responses.count > 1 ? 'responses' : 'response' %> to view anonymous feedback.</h6>
 					<% else %>
 
-<table style="border: none; width: 100%;">
+<table style="border: none; width: 45%;">
   <thead>
 <tr style="background: #fff; margin-top: 40px; color: #444; font-size: 19px;">
       <th style="padding: 0 0 20px 0; margin-top: 20px; color: #444; font-size: 19px;">Anonymous Responses</th>
@@ -70,8 +101,10 @@
 	  <% @anonymous_responses.each do |ar| %>
 		  <% @date_request = DateRequest.find(ar.date_request_id) %>
       <tr style="margin-right: 10px;" >
-        <td style="margin-right: 10px;"><%= ar.date_response_comment %></td>
-        <td><%= link_to 'Edit', edit_date_request_path(@date_request), remote: :true,  id: "home-edit-date-button" %></td>
+        <td style="margin-right: 10px;"><%= truncate(ar.date_response_comment, length: 25, separator: ' ') %></td>
+	<td><%= link_to 'View Comment', "#inline#{ar.id}", remote: :true,  class: "fancybox-link" %></td>
+
+	<div id="inline<%=ar.id%>" style="display:none; padding:50px;"><h4>Anonymous Feedback</h4><h5 style="color: #2795b6;font-style: italic;"><%=ar.date_response_comment%></h5></div>
       </tr>
     <% end %>
   </tbody>
@@ -85,7 +118,3 @@
 
 </div>
 <div style="clear: both;"></div>
-
-<%= link_to 'Back', users_path %>
-
-

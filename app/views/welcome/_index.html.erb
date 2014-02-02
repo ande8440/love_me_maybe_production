@@ -8,20 +8,29 @@
       <th>Phone</th>
       <th>Dating Username</th>
       <th>Dating Site</th>
-      <th>Rating</th>
+      <th style="text-align:center;">Rating</th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @user.date_requests.each do |date_request| %>
+    <% @user.date_requests.where(matched: false).each do |date_request| %>
       <tr style="margin-right: 10px;" >
         <td style="margin-right: 10px; padding-left:0px;"><%= date_request.first_name %></td>
-        <td style="margin-right: 10px;"><%= date_request.last_name %></td>
-        <td><%= date_request.date_phone %></td>
-        <td><%= date_request.date_username %></td>
-        <td><%= date_request.date_username_site %></td>
-        <td><%= date_request.date_rating %></td>
+        <td style="margin-right: 10px;"><%= date_request.last_name.blank? ? "N/A" : date_request.last_name %></td>
+        <td><%= date_request.date_phone.blank? ? "N/A" : date_request.date_phone %></td>
+        <td><%= date_request.date_username.blank? ? "N/A" : date_request.date_username %></td>
+        <td><%= date_request.date_username_site.blank? ? "N/A" : date_request.date_username_site %></td>
+	<% if date_request.date_rating == "Yes" %>
+			<td style="text-align:center;"><%= image_tag 'thumbup.png' %> </td>
+		<% else %>
+			<% if date_request.date_rating == "Friends" %>
+		    		<td style="text-align:center;"><%= image_tag 'friendicon.png' %></td>
+			<% else %>
+				<td style="text-align:center;"><%= image_tag 'thumbdown.png' %></td>
+			<% end %>
+		<% end %>
+	
         <td><%= link_to 'Delete', date_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

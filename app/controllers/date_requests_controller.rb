@@ -1,6 +1,7 @@
 class DateRequestsController < ApplicationController
   before_action :set_date_request, only: [:show, :edit, :update, :destroy]
   before_filter :load
+  before_action :check_if_admin, only: [:index, :show]
 
   def load
     @date_requests = DateRequest.all
@@ -83,6 +84,11 @@ class DateRequestsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_date_request
       @date_request = DateRequest.find(params[:id])
+    end
+
+    def check_if_admin
+	    redirect_to root_path unless current_user.admin?
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

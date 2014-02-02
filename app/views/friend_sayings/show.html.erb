@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Saying:</strong>
+  <%= @friend_saying.saying %>
+</p>
+
+<%= link_to 'Edit', edit_friend_saying_path(@friend_saying) %> |
+<%= link_to 'Back', friend_sayings_path %>

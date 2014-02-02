@@ -6,11 +6,11 @@
 						<h3 style="margin-bottom: 40px;">You and <%=@user.user_handle%> both want to <%= @date_request.date_rating == 'Yes' ? 'go on another date!' : 'be friends!' %></h3>
 						<h5 style="font-weight: 300;">What <%= @user.user_handle %> said about you:</h5>
 						<h5 style="color: #2795b6; font-style: italic;margin-bottom: 40px;"><%= @date_request.date_comment %></h5>
-						<h3 style="margin-bottom: 40px;"><%= @date_request.date_rating == 'Yes' ? 'Yes saying' : 'Friend saying' %></h3>
+						<h3 style="margin-bottom: 40px;"><%= @date_request.date_rating == 'Yes' ? YesSaying.first(offset: rand(YesSaying.count)).saying : FriendSaying.first(offset: rand(FriendSaying.count)).saying %></h3>
 						<div class="large-10" style="margin: 65px auto 0 auto;"><span style=" margin: 0 auto 10px auto;display: block;">Want to see how it went with other dates? </span><%=link_to current_user.nil? ? "Sign up!" : "Add Dates +", current_user.nil? ? signup_path : root_path, class: "button small", style: "margin-bottom: 15px;" %></div>
 
 					<% else %>
-						<h3 style="margin-bottom: 40px;">Looks like you and <%=@user.user_handle%> both just want to move on.</h3><h5 style="font-weight:normal;"> Don't worry, your message will remain anonymous and will only be visible if <%=@user.user_handle%> has at least 5 anonymous messages. </h5>
+						<h3 style="margin-bottom: 40px;">Looks like you and <%=@user.user_handle%> both just want to move on.</h3><h5 style="font-weight:normal;"> Don't worry, your message will remain anonymous and will only be visible if <%=@user.user_handle%> has at least 3 anonymous messages. </h5>
 						<div class="large-10" style="margin: 65px auto 0 auto;"><span style=" margin: 0 auto 10px auto;display: block;">Want to see how it went with other dates? </span><%=link_to current_user.nil? ? "Sign up!" : "Add Dates +", current_user.nil? ? signup_path : root_path, class: "button small", style: "margin-bottom: 15px;" %></div>
 					<% end %>
 				<% else %>

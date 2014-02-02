@@ -29,6 +29,7 @@ gem "nokogiri", "~> 1.5.0"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'fancybox2-rails', '~> 0.2.4'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'

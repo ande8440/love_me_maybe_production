@@ -8,11 +8,26 @@ class DateResponse < ActiveRecord::Base
 		validates :date_response_rating, presence: { message: "You have to say how the date went!" }
 		validates :date_response_comment, presence: { message: "Please leave an additional comment. Remember, it's anonymous!" }
 		validates_uniqueness_of :uniq_phone_identifier, allow_nil: true, allow_blank: true, message: "We're sorry, but it looks like someone matching your information already got a response from this profile."
+		validate :check_for_phone_or_username
 		
 
 	def set_uniq_phone_identifier
 		if ! self.date_request_id.nil?
 			self.uniq_phone_identifier = "#{self.date_request_id.to_s}-#{self.date_response_phone}"
+		end
+	end
+
+	def check_for_phone_or_username
+		if ! date_response_username.blank? || ! date_response_site.blank?
+			if date_response_username.blank? || date_response_site.blank?
+				errors.add(:date_response_username, "Must provide both username and site")
+			end
+		end
+
+		if date_response_phone.blank?
+			if date_response_username.blank? || date_response_site.blank?
+				errors.add(:date_response_username, "Username/site information must be provided if you do not provide phone number")
+			end
 		end
 	end
 
@@ -38,7 +53,7 @@ class DateResponse < ActiveRecord::Base
 			request_user.date_requests.each do |request|
 				if self.date_response_phone == request.date_phone
 					self.date_request_id = request.id
-				elsif request.date_username == self.date_response_username && request.date_username_site == self.date_response_site && ! self.date_response_username.blank?
+				elsif request.date_username == self.date_response_username && request.date_username_site == self.date_response_site && ! self.date_response_username.blank? && ! self.date_response_site.blank?
 					self.date_request_id = request.id
 				end
 			end

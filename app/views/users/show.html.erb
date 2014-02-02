@@ -20,9 +20,11 @@
 
 		<h2 style="margin-bottom:2px;"><%= @user.user_handle %></h2>
 
+		<% if ! @user.profile_name_hidden? %>
 		<p style="margin-bottom: 2px;">
 		  <%= @user.first_name %> <%= @user.last_name %> 
 		  </p>
+	        <% end %>
 	  </div>
 
 	  <div class="large-9" style="float: left;">
@@ -66,4 +68,3 @@
   </div>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |

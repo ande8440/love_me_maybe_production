@@ -23,7 +23,7 @@
       <h5 style="margin-bottom: 0px;"><%= pluralize(@date_request.errors.count, "error") %> prohibited you from submitting date:</h5>
 
       <ul style="padding: 0 0 0 30px;margin-bottom: 5px;">
-      <% @date_request.errors.full_messages.each do |msg| %>
+      <% @date_request.errors.each do |key, msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -41,23 +41,23 @@
   <div class="large-12" style="margin: 0 auto 0 auto; text-align:center;">
 
   <div class="large-2 field" style="display: inline-block;text-align:left;">
-    <%= f.label :first_name %><br>
+    <%= f.label :first_name, "First Name*" %><br>
     <%= f.text_field :first_name %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
-    <%= f.label :last_name %><br>
+    <%= f.label :last_name, "Last Name" %><br>
     <%= f.text_field :last_name %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
-    <%= f.label :date_phone %><br>
+    <%= f.label :date_phone, "Date's Phone Number" %><br>
     <%= f.text_field :date_phone, {id: "phone_new_date"} %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
-    <%= f.label :date_username %><br>
+    <%= f.label :date_username, "Date Username" %><br>
     <%= f.text_field :date_username %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
-    <%= f.label :date_username_site %><br>
+    <%= f.label :date_username_site, "Dating Site" %><br>
     <%= f.select( :date_username_site, [['OkCupid','OkCupid'],['Tinder','Tinder'],['eHarmony','eHarmony'],['Match.com','Match.com'],['PlentyofFish','PlentyofFish'],['Zoosk','Zoosk'],['Christian Mingle','Christian Mingle'],['DateHookup','DateHookup'],['HowAboutWe','HowAboutWe'],['Coffee Meets Bagel','Coffee Meets Bagel'],['BlackPeopleMeet','BlackPeopleMeet'],['JDate','JDate'],['Badoo','Badoo'],['Meetme','Meetme'],['Skout','Skout'],['SeniorPeopleMeet','SeniorPeopleMeet']], { :prompt => 'Select'}, style: "height: 32px;") %>
   </div>
   </div>
@@ -79,7 +79,8 @@
   </div>
   </div>
   <div class="field" style="text-align:center;">
-	  <h5 style="margin-top:20px; margin-bottom:0px;">Comment</h5><br>
+	  <h5 style="margin-top:20px; margin-bottom:0px;">Comment*</h5>
+	  <h6>(Anonymous unless you want the same thing)</h6>
     <%= f.text_area :date_comment %>
   </div>
   <div class="actions large-12" style="margin: 0 auto 0 auto; text-align:center;">

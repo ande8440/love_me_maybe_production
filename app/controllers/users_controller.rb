@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
+
+  include SessionsHelper
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_signed_in, only: [:new]
 
   # GET /users
   # GET /users.json
   def index
+	  redirect_to root_path unless current_user.admin?
     @users = User.all
   end
 
@@ -24,6 +28,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+	  redirect_to root_path unless signed_in? && @user == current_user || current_user.admin?
+		 
+
   end
 
   # POST /users
@@ -79,8 +86,19 @@ class UsersController < ApplicationController
       @user = User.find_by_url_slug!(params[:id])
     end
 
+    def check_signed_in
+	    if signed_in?
+		    redirect_to root_path
+	    end
+    end
+
+
+    def check_user_edit
+	    
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :user_phone, :user_handle, :image, :admin, :password_digest, :password_reset_token, :password_reset_sent_at, :remember_token, :email_confirm_token, :email_confirm_sent_at, :email_confirmed, :password, :password_confirmation, user_dating_usernames_attributes: [:dating_site_username, :dating_site_website])
+      params.require(:user).permit(:first_name, :last_name, :email, :user_phone, :user_handle, :image, :admin, :profile_name_hidden, :password_digest, :password_reset_token, :password_reset_sent_at, :remember_token, :email_confirm_token, :email_confirm_sent_at, :email_confirmed, :password, :password_confirmation, user_dating_usernames_attributes: [:dating_site_username, :dating_site_website])
     end
 end

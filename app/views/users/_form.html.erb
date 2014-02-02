@@ -1,4 +1,9 @@
-<script></script>
+<script>
+  $(function() {
+    $( document ).tooltip();
+  });
+  </script>
+
 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
@@ -45,7 +50,9 @@
 
   <div style="clear:both;"></div>
   <div class="large-6 field" style="display: inline-block; margin-top: 10px;">
-	  <%= f.label :user_handle, "LoveMeMaybe Handle*", style: "display: inline-block; margin-bottom:10px;" %><span data-tooltip data-width="300" class="has-tip" style="background: #FF9900; width: 16px; height: 16px;display: inline-block; border-radius: 50%; color: #fff; font-size:15px; text-align: center; margin-left:5px;" title="This will be your unique LoveMeMaybe page to post to your online dating & social profiles for people to anonymously visit (example: www.lovememaybe.com/lover_boy12345)    ----------------------------------------------------- Note: they will not be able to provide feedback unless their information matches that of one of your dates.">?</span>
+	  <%= f.label :user_handle, "LoveMeMaybe Handle*", style: "display: inline-block; margin-bottom:5px;" %>
+	  <br>
+	  <%= f.label :user_handle, "(This will be your unique LoveMeMaybe page)", style: "display: inline-block; margin-bottom:10px;font-size: 12px;" %>
 	  <br>
     <%= f.text_field :user_handle %>
   </div>
