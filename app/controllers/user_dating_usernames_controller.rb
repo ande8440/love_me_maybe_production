@@ -56,7 +56,7 @@ class UserDatingUsernamesController < ApplicationController
   def destroy
     @user_dating_username.destroy
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_to edit_user_path(current_user) }
       format.json { head :no_content }
     end
   end

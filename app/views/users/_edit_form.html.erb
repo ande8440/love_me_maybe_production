@@ -111,7 +111,7 @@ box-sizing: border-box;
 transition: box-shadow 0.45s, border-color 0.45s ease-in-out;"><%= name.dating_site_website %></span>
 		  </div>
 		  <div class="field" style="width: 5%; display: inline-block; padding-top:9px;">
-		  <%= link_to 'Delete', name, style: 'margin: 10px 0 0 10px;', method: :delete, data: { confirm: 'Are you sure?' } %>
+		  <%= link_to 'Delete', name.id ? name : edit_user_path(current_user), style: 'margin: 10px 0 0 10px;',  method: name.id ? :delete : :get, data: { confirm: 'Are you sure?' } %>
 	  </div>
 	   <div style="clear:both;"></div>
 

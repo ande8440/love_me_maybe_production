@@ -12,11 +12,8 @@
 				<div class="large-2" style="height:150px;width: 150px;;float:left;margin-top:20px;"><%= image_tag('profile-picture-holder.png', style: "box-shadow: 0px 0px 0px 2.5px;") %></div>
 			<% end %>
 
-			<% if @user == current_user %> 
-				<span style="float:right; padding-right: 30px;"><%= link_to 'Edit Profile', edit_user_path(current_user), style: "float: right;margin-top:15px; margin-left:10px;" %></span>
-			<% end %>
 
-		<div class="large-4" style="float:left;">
+		<div class="large-4" style="float:left; clear:right;">
 
 		<h2 style="margin-bottom:0px; font-size:34px;"><%= @user.user_handle %></h2>
 
@@ -32,7 +29,7 @@
 		  </p>
 	  <% end %>
 
-	  </div>
+  </div><br>
 
 	  <div class="large-9" style="float: left;">
 		  <p>
@@ -48,6 +45,10 @@
 </p>
 
 	</div>
+	
+			<% if @user == current_user %> 
+				<span style="float:left;clear:left; padding-right: 30px;"><%= link_to 'Edit Profile', edit_user_path(current_user), style: "float: right;margin-top:15px; margin-left:10px;" %></span>
+			<% end %>
   	</div>
 
 
