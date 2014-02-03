@@ -40,7 +40,7 @@ class DateResponse < ActiveRecord::Base
 		if ! self.date_request_id.nil?
 			matched_request = DateRequest.find(self.date_request_id)
 			matched_user = User.find(matched_request.user_id)
-			if matched_user.receive_notifications?
+			if matched_user.receive_notifications? && matched_user.email_confirmed?
 				UserMailer.match_notification(matched_request, matched_user).deliver
 			end
 		end
