@@ -17,6 +17,21 @@
 //= require fancybox
 //= require_tree .
 
+$(document).ready(function() {
+	$(".fancybox-link").fancybox({
+		maxWidth	: 800,
+		maxHeight	: 600,
+		fitToView	: true,
+		width		: '60%',
+		height		: '60%',
+		autoSize	: true,
+		closeClick	: false,
+		openEffect	: 'none',
+		closeEffect	: 'none'
+	});
+});
+
+
 $(function(){ $(document).foundation(); });
 
 
