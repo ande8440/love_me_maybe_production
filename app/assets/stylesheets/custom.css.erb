@@ -1,0 +1,76 @@
+
+	.gray-image-yes{
+		height:22px;
+		width: 22px;
+		overflow: hidden;
+		display: inline-block;
+		background: url(<%= asset_url 'thumbup-hover.png' %>);
+	}
+
+	.gray-image-friend{
+		height:22px;
+		width: 22px;
+		overflow: hidden;
+		display: inline-block;
+		background: url(<%= asset_url 'friendicon-hover.png' %>);
+	}
+
+	.gray-image-no{
+		height:22px;
+		width: 22px;
+		overflow: hidden;
+		display: inline-block;
+		background: url(<%= asset_url 'thumbdown-hover.png' %>);
+	}
+
+	.gray-image:hover {
+  cursor:pointer;
+  background-position:left -22px;
+
+	}
+.rating-icon > input[type=radio]{
+  display:none;
+}
+
+.rating-icon > input[type=radio]:checked + .gray-image{
+  cursor:pointer;
+  background-position:left -22px;
+}
+
+.rating-icon-yes > input[type=radio]:checked + .gray-image + span{
+	color:green;
+	opacity: 1;
+}
+
+.rating-icon-no > input[type=radio]:checked + .gray-image + span{
+	color:red;
+	opacity: 1;
+}
+
+.rating-icon-friend > input[type=radio]:checked + .gray-image + span{
+	color:orange;
+	opacity: 1;
+}
+
+.rating-icon > input[type=radio] + .gray-image + span{
+color: #999999;
+opacity: .4;
+  
+}
+
+.rating-icon-yes > input[type=radio] + .gray-image + span:hover {
+	color:green;
+	opacity: 1;
+}
+
+.rating-icon-no > input[type=radio] + .gray-image + span:hover {
+	color:red;
+	opacity: 1;
+}
+
+.rating-icon-friend > input[type=radio] + .gray-image + span:hover {
+	color:orange;
+	opacity: 1;
+}
+
+

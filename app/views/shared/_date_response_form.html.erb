@@ -8,6 +8,8 @@
 }).call(this);
 </script>
 
+
+
 <%= form_for @date_response, remote: true do |f| %>
   <% if @date_response.errors.any? %>
     <div id="error_explanation" style="background: #F5A0A0;border: 1px solid;margin-bottom: 25px;padding: 10px; text-align: left;">
@@ -21,13 +23,6 @@
     </div>
   <% end %>
 
-  <style> #date-rating-yes label {font-weight:700;color:#999999; opacity:.4;}
-	  #date-rating-yes label:hover {color:green;opacity:1;}
-	  #date-rating-friend label {font-weight:700;color:#999999; opacity:.4;}
-	  #date-rating-friend label:hover {color:orange;opacity:1;}
-	  #date-rating-no label {font-weight:700;color:#999999; opacity:.4;}
-	  #date-rating-no label:hover {color:red;opacity:1;}
-  </style>
 
   <% if current_user.nil? || current_user == @user  %>
 
@@ -63,18 +58,33 @@
   <div class="large-8" style="margin: 20px auto 0 auto; text-align:center;"><h5>What'll it be?</h5></div>
 	  <div class="large-8" style="margin: 15px auto 0 auto; text-align:center;">
 		  
-  <div class="large-3 field" style="display: inline-block; color:green">
-    <%= f.radio_button( :date_response_rating, "Yes") %>
-    <span style="display: inline-block;" id="date-rating-yes"><%= f.label :date_response_rating, "Another Date" %></span>
-  </div>
-  <div class="large-3 field" style="display: inline-block; color:orange">
-    <%= f.radio_button( :date_response_rating, "Friends") %>
-    <span style="display: inline-block;" id="date-rating-friend"><%= f.label :date_response_rating, "Let's be friends!"%></span>
-  </div>
-  <div class="large-3 field" style="display: inline-block;" id="date-rating-no">
-   <%= f.radio_button( :date_response_rating, "No") %>
-	  <span style="display: inline-block;"><%= f.label :date_response_rating, "Call it quits" %></span>
-  </div>
+		  <div class="large-3 field" style="display: inline-block;">
+			  <label class="rating-icon rating-icon-yes" for="yes-rating" style="display:inline;">
+				  <%= f.radio_button( :date_response_rating, "Yes", id: "yes-rating") %>
+				  <div class="gray-image gray-image-yes"></div>
+				  <span style="display: inline-block; font-weight:700" id="date-rating-yes">Another Date</span>
+			  </label>
+    
+		  </div>
+
+		  <div class="large-3 field" style="display: inline-block;">
+			  <label class="rating-icon rating-icon-friend" for="friend-rating" style="display:inline;">
+				  <%= f.radio_button( :date_response_rating, "Friends", id: "friend-rating") %>
+				  <div class="gray-image gray-image-friend"></div>
+				  <span style="display: inline-block; font-weight:700">Let's be friends!</span>
+			  </label>
+    
+		  </div>
+
+		  <div class="large-3 field" style="display: inline-block;padding-right: 25px;">
+			  <label class="rating-icon rating-icon-no" for="no-rating" style="display:inline;">
+				  <%= f.radio_button( :date_response_rating, "No", id: "no-rating") %>
+				  <div class="gray-image gray-image-no"></div>
+				  <span style="display: inline-block; font-weight:700" id="date-rating-no">Call it quits</span>
+			  </label>
+    
+		  </div>
+
   </div>
   <div class="field" style="text-align:center;">
 	  <h5 style="margin-top:20px; margin-bottom:0px;">Comment*</h5>
@@ -103,19 +113,33 @@
 
   <div class="large-8" style="margin: 20px auto 0 auto; text-align:center;"><h5>What'll it be?</h5></div>
 	  <div class="large-8" style="margin: 15px auto 0 auto; text-align:center;">
-		  
-  <div class="large-3 field" style="display: inline-block; color:green">
-    <%= f.radio_button( :date_response_rating, "Yes") %>
-    <span style="display: inline-block;" id="date-rating-yes"><%= f.label :date_response_rating, "Another Date" %></span>
-  </div>
-  <div class="large-3 field" style="display: inline-block; color:orange">
-    <%= f.radio_button( :date_response_rating, "Friends") %>
-    <span style="display: inline-block;" id="date-rating-friend"><%= f.label :date_response_rating, "Let's be friends!"%></span>
-  </div>
-  <div class="large-3 field" style="display: inline-block;" id="date-rating-no">
-   <%= f.radio_button( :date_response_rating, "No") %>
-	  <span style="display: inline-block;"><%= f.label :date_response_rating, "Call it quits" %></span>
-  </div>
+########		  
+  <div class="large-3 field" style="display: inline-block;">
+			  <label class="rating-icon rating-icon-yes" for="yes-rating" style="display:inline;">
+				  <%= f.radio_button( :date_response_rating, "Yes", id: "yes-rating") %>
+				  <div class="gray-image gray-image-yes"></div>
+				  <span style="display: inline-block; font-weight:700" id="date-rating-yes">Another Date</span>
+			  </label>
+    
+		  </div>
+
+		  <div class="large-3 field" style="display: inline-block;">
+			  <label class="rating-icon rating-icon-friend" for="friend-rating" style="display:inline;">
+				  <%= f.radio_button( :date_response_rating, "Friends", id: "friend-rating") %>
+				  <div class="gray-image gray-image-friend"></div>
+				  <span style="display: inline-block; font-weight:700">Let's be friends!</span>
+			  </label>
+    
+		  </div>
+
+		  <div class="large-3 field" style="display: inline-block;padding-right: 25px;">
+			  <label class="rating-icon rating-icon-no" for="no-rating" style="display:inline;">
+				  <%= f.radio_button( :date_response_rating, "No", id: "no-rating") %>
+				  <div class="gray-image gray-image-no"></div>
+				  <span style="display: inline-block; font-weight:700" id="date-rating-no">Call it quits</span>
+			  </label>
+    
+		  </div>
   </div>
   <div class="field" style="text-align:center;">
 	  <h5 style="margin-top:20px; margin-bottom:0px;">Comment*</h5>
