@@ -25,7 +25,7 @@
 
 	  <% if ! @user.hide_city_state? && @user.city && @user.state %>
 		<p style="margin-bottom: 2px;">
-		  <%= @user.city %>, <%= @user.state %>
+		  <%= @user.city + ", "%><%= @user.state %>
 		  </p>
 	  <% end %>
 
@@ -56,7 +56,7 @@
 
 	<% if @user == current_user %>
 
-		<div class="large-11" style="margin: 0 auto; text-align: center; margin-top: 45px; /* border-bottom: dashed 2px #222; */ background: #28b779;padding: 15px;border-radius: 4px;font-color: #ffffff;">
+		<div class="large-11" style="margin: 0 auto; text-align: center; margin-top: 45px; /* border-bottom: dashed 2px #222; */ background: #28b779;padding: 15px;border-radius: 4px;font-color: #ffffff;text-overflow:ellipsis;overflow:hidden;overflow-wrap:break-word;">
 
 					<h5 style="font-weight:normal;color: #fff;">This is your public profile where previous dates will be able to tell you what they thought. Share your profile with them or post it to your other online profiles.</h5>
 					<h4 style="display:inline"> <a style="color: #ffb848;font-weight: bolder;font-size: 25px;" href=<%= root_url+@user.url_slug%>>lovememaybe/<%=@user.url_slug%></a></h4>

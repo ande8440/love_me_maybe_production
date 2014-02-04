@@ -24,7 +24,7 @@ $(document).ready(function() {
 				<div style="width: 40%;height: 60px; border-radius: 5px 5px 0px 0px; margin-bottom: 0px; display: inline; float:left; padding: 20px; text-align: center;"><%= link_to "Requests (#{@request_count})", root_path, class: "request-link" %></div>
 				<div style="width: 40%;height: 60px; clear:both; margin-bottom: 0px; display: inline-block; padding: 20px; padding-left: 5px;text-align: center;background: #FFFCDD; box-shadow: 0 0 1px 1px; border-bottom:none; border-radius: 5px 5px 0px 0px;font-weight: 700;"><span style="background: url(<%= asset_path 'mini-heart.png' %>) no-repeat; padding:0px 0 5px 30px;">Responses (<%= @response_count %>)</span></div>
 
-				<div style="width: 100%; background: #fff; border-radius: 5px 5px 5px 5px; margin-top:0px; padding: 30px 30px 30px 30px; box-shadow: 0 0 1px 1px;">
+				<div style="width: 100%; background: #fff; border-radius: 5px 5px 5px 5px; margin-top:0px; padding: 30px 30px 30px 30px; box-shadow: 0 0 1px 1px;text-overflow:ellipsis;overflow:hidden;overflow-wrap:break-word;">
 					<div class="small-12" style="display: inline-block;border-radius: 5px;padding: 15px 15px 0px 0px;margin: 0 auto;">
 					<div style="display: inline;margin: 0 auto;/* float: left; */">
 							<%= image_tag('link-link.png', style: "float: left;") %>
