@@ -23,7 +23,7 @@
 		  </p>
 	  <% end %>
 
-	  <% if ! @user.hide_city_state? && @user.city && @user.state %>
+	  <% if ! @user.hide_city_state? && ! @user.city.blank? && ! @user.state.blank? %>
 		<p style="margin-bottom: 2px;">
 		  <%= @user.city + ", "%><%= @user.state %>
 		  </p>
