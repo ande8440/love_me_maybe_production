@@ -20,8 +20,7 @@ class SessionsController < ApplicationController
     end
   end
   
-=begin  
-  def create_FB
+def create_FB
     omniauth = request.env["omniauth.auth"]
     authenticated_user = User.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     email_user = User.find_by_email(omniauth['info']['email'])
@@ -64,9 +63,6 @@ class SessionsController < ApplicationController
     end
 	  
   end
-
-
-=end
 
 def destroy
     sign_out

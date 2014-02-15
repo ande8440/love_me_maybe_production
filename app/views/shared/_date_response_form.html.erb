@@ -42,7 +42,7 @@
     <%= f.text_field :date_response_last_name %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
-    <%= f.label :date_response_phone, "Phone*" %><br>
+    <%= f.label :date_response_phone, "Your Phone Number*" %><br>
     <%= f.text_field :date_response_phone, {id: "phone_new_response"} %>
   </div>
   <div class="large-2 field" style="display: inline-block;text-align:left">
@@ -105,12 +105,19 @@
 
     <%= f.hidden_field :date_response_first_name, value: current_user.first_name %>
     <%= f.hidden_field :date_response_last_name, value: current_user.last_name %>
-    <%= f.hidden_field :date_response_phone, value: current_user.user_phone %>
+
+    <% if ! current_user.user_phone.blank? %>
+	    <%= f.hidden_field :date_response_phone, value: current_user.user_phone %>
+    <% end %>
+
     <%= f.hidden_field :date_requester_id, value: @user.id %>
     <%= f.hidden_field :date_responder_id, value: current_user.id %>
   </div>
 
-
+  <div class="large-2 field" style="display: inline-block;text-align:left">
+    <%= f.label :date_response_phone, "Your Phone Number*" %><br>
+    <%= f.text_field :date_response_phone, {id: "phone_new_response"} %>
+  </div>
   <div class="large-8" style="margin: 20px auto 0 auto; text-align:center;"><h5>What'll it be?</h5></div>
 	  <div class="large-8" style="margin: 15px auto 0 auto; text-align:center;">		  
   <div class="large-3 field" style="display: inline-block;">

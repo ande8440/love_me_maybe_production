@@ -23,6 +23,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'aws-sdk', '~> 1.5.7'
 gem "fog", "~> 1.3.1"
 gem "nokogiri", "~> 1.5.0"
+gem 'omniauth-facebook'
+gem 'certified'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

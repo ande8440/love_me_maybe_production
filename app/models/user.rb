@@ -15,19 +15,19 @@ class User < ActiveRecord::Base
 	validates :last_name, presence: true, length: { maximum: 75 }
 
 	# still need to do whole (312) 343-2234 format thing BE and FE
-	validates :user_phone, presence: true, length: { minimum: 14, maximum: 14, message: "must be valid (999) 999-9999 format" }, uniqueness: { case_sensitive: false }
+	validates :user_phone, length: { minimum: 14, maximum: 14, message: "must be valid (999) 999-9999 format" }, uniqueness: { case_sensitive: false }, allow_blank: true
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-	validates :password, presence: true, length: { minimum: 6 }, :if => :password_digest_changed?
-	validates :password_confirmation, presence: true,:if => :password_digest_changed?
+	validates :password, presence: true, length: { minimum: 6 }, :if => :password_digest_changed? && :should_validate_password?
+	validates :password_confirmation, presence: true,:if => :password_digest_changed? && :should_validate_password?
 
 	before_save { |user| user.email = email.downcase }
 	before_save :create_remember_token
-	validates_confirmation_of :password, :if => :password_digest_changed?
+	validates_confirmation_of :password, :if => :password_digest_changed? && :should_validate_password?
 
 	before_validation :generate_slug
 
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
 	end
 
 	def generate_slug
-		self.url_slug ||= user_handle.parameterize
+		self.url_slug = user_handle.parameterize
 	end
 	
 	def password=(unencrypted_password)
@@ -83,14 +83,34 @@ class User < ActiveRecord::Base
 	    self[column] = SecureRandom.urlsafe_base64
 	  end while User.exists?(column => self[column])
 	end
+
+	def from_omniauth(auth)
+		    self.provider = auth.provider
+		    self.uid = auth.uid
+		    self.first_name = auth.info.first_name
+		    self.last_name = auth.info.last_name
+		    self.email = auth.info.email 
+		    self.fb_image = auth.info.image
+		    self.fb_location = auth.info.location
+		    self.oauth_token = auth.credentials.token
+		    self.oauth_expires_at = Time.at(auth.credentials.expires_at)
+		    self.fb_verified = auth.verified
+		    if ! auth.info.nickname.nil?
+			    self.user_handle = auth.info.nickname
+		    else
+			    self.user_handle = auth.extra.raw_info.id
+		    end
+    	end
 	 
 
 
 	 def should_validate_password?
-	   if params[:user][:password]
-		    true
-	    else
+	    if self.password_digest.present?
 		    false
+	    elsif self.provider.present? && self.uid.present?
+		    false
+	    else
+		    true
 	    end
 	 end
 end

@@ -12,6 +12,8 @@
 
 <div class="large-7 row" style="margin: 0 auto;">
 
+	<div class="large-6" style="margin: 1.5em auto;"><a style="margin:1.5em" href="/auth/facebook"><%=image_tag 'fcbk-signup.png', alt: "Facebook Signin" %></a></div>
+
       <%= form_for(:session, url: sessions_path) do |f| %>	
 	      <div class="large-6 field" style="margin: 0 auto;">      
 	<%= f.label :email %>

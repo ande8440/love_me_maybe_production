@@ -14,6 +14,10 @@ LoveMaybe::Application.routes.draw do
 
   post '/signin', to: 'sessions#create'
 
+  post 'auth/:provider/callback', to: 'sessions#create_FB'
+  get 'auth/:provider/callback', to: 'sessions#create_FB'
+  get 'auth/failure', to: redirect('/')
+
   delete '/signout', to: 'sessions#destroy'
 
   get '/signup', to: 'users#new'
