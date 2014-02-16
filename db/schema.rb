@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140215192116) do
+ActiveRecord::Schema.define(version: 20140216233638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(version: 20140215192116) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["url_slug"], name: "index_users_on_url_slug", using: :btree
   add_index "users", ["user_handle"], name: "index_users_on_user_handle", unique: true, using: :btree
-  add_index "users", ["user_phone"], name: "index_users_on_user_phone", unique: true, using: :btree
 
   create_table "yes_sayings", force: true do |t|
     t.string   "saying"
