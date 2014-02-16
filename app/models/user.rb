@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 	validates :last_name, presence: true, length: { maximum: 75 }
 
 	# still need to do whole (312) 343-2234 format thing BE and FE
-	validates :user_phone, length: { minimum: 14, maximum: 14, message: "must be valid (999) 999-9999 format" }
+	validates :user_phone, length: { minimum: 14, maximum: 14, message: "must be valid (999) 999-9999 format" }, allow_nil: true, allow_blank: true
 	validates_uniqueness_of :user_phone, allow_nil: true, allow_blank: true
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
